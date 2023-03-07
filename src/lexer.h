@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <vector>
 #include <optional>
 
 #define TOKEN_HAS_VALUE		false
@@ -17,6 +18,7 @@ enum SyntaxKind{
 	FSLASH_TOKEN,
 	OPAR_TOKEN,
 	CPAR_TOKEN,
+	BINARY_EXPRESSION_TOKEN,
 };
 
 class SyntaxToken{
@@ -28,6 +30,32 @@ public:
 	bool Nullval;
 
 	SyntaxToken(SyntaxKind kind, int position, std::string text, bool nullval = TOKEN_NULL_VALUE, int value = 0);
+};
+
+class SyntaxNode{
+public:
+	virtual SyntaxKind Kind() = 0;
+	//virtual std::vector<SyntaxNode> Children() = 0;
+};
+
+class ExpressionSyntax : public SyntaxNode{};
+
+class NumberExpressionSyntax : public ExpressionSyntax{
+public:
+	SyntaxKind Kind() override { return NUMBER_TOKEN; };
+	SyntaxToken NumberToken;
+	
+	NumberExpressionSyntax(const SyntaxToken numberToken) : NumberToken(numberToken){};	
+};
+
+class BinaryExpressionSyntax : public ExpressionSyntax{
+public:
+	SyntaxKind Kind() override { return BINARY_EXPRESSION_TOKEN; };
+
+	ExpressionSyntax* Left;
+	SyntaxToken* OperatorToken;
+	ExpressionSyntax* Right;
+	BinaryExpressionSyntax(ExpressionSyntax* left, SyntaxToken* operatorToken, ExpressionSyntax* right);
 };
 
 class Lexer{

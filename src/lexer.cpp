@@ -63,7 +63,7 @@ SyntaxToken* Lexer::NextToken(){
 		return new SyntaxToken(CPAR_TOKEN, _position++, ")");
 	}
 
-	return new SyntaxToken(BAD_TOKEN, _position++, _text.substr(_position - 1, 1));
+	return new SyntaxToken(BAD_TOKEN, _position++, _text.substr(_position, 1));
 }
 
 void Lexer::Next(){
@@ -76,3 +76,9 @@ char Lexer::Current(){
 	
 	return _text[_position];
 }
+
+BinaryExpressionSyntax::BinaryExpressionSyntax(ExpressionSyntax* left, SyntaxToken* operatorToken, ExpressionSyntax* right){
+		Left = left;
+		OperatorToken = operatorToken;
+		Right = right;
+	}

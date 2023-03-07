@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/dev/cpp/test-compiler/src/lexer.cpp" "CMakeFiles/test-compiler.dir/src/lexer.cpp.obj" "gcc" "CMakeFiles/test-compiler.dir/src/lexer.cpp.obj.d"
   "C:/dev/cpp/test-compiler/src/main.cpp" "CMakeFiles/test-compiler.dir/src/main.cpp.obj" "gcc" "CMakeFiles/test-compiler.dir/src/main.cpp.obj.d"
+  "C:/dev/cpp/test-compiler/src/parser.cpp" "CMakeFiles/test-compiler.dir/src/parser.cpp.obj" "gcc" "CMakeFiles/test-compiler.dir/src/parser.cpp.obj.d"
   )
 
 # Targets to which this target links.

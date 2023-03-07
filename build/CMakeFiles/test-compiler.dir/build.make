@@ -74,48 +74,65 @@ CMakeFiles/test-compiler.dir/src/lexer.cpp.obj: CMakeFiles/test-compiler.dir/inc
 CMakeFiles/test-compiler.dir/src/lexer.cpp.obj: C:/dev/cpp/test-compiler/src/lexer.cpp
 CMakeFiles/test-compiler.dir/src/lexer.cpp.obj: CMakeFiles/test-compiler.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/dev/cpp/test-compiler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test-compiler.dir/src/lexer.cpp.obj"
-	"C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/c++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test-compiler.dir/src/lexer.cpp.obj -MF CMakeFiles/test-compiler.dir/src/lexer.cpp.obj.d -o CMakeFiles/test-compiler.dir/src/lexer.cpp.obj -c C:/dev/cpp/test-compiler/src/lexer.cpp
+	C:/msys64/mingw64/bin/g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test-compiler.dir/src/lexer.cpp.obj -MF CMakeFiles/test-compiler.dir/src/lexer.cpp.obj.d -o CMakeFiles/test-compiler.dir/src/lexer.cpp.obj -c C:/dev/cpp/test-compiler/src/lexer.cpp
 
 CMakeFiles/test-compiler.dir/src/lexer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test-compiler.dir/src/lexer.cpp.i"
-	"C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/c++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:/dev/cpp/test-compiler/src/lexer.cpp > CMakeFiles/test-compiler.dir/src/lexer.cpp.i
+	C:/msys64/mingw64/bin/g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:/dev/cpp/test-compiler/src/lexer.cpp > CMakeFiles/test-compiler.dir/src/lexer.cpp.i
 
 CMakeFiles/test-compiler.dir/src/lexer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test-compiler.dir/src/lexer.cpp.s"
-	"C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/c++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/dev/cpp/test-compiler/src/lexer.cpp -o CMakeFiles/test-compiler.dir/src/lexer.cpp.s
+	C:/msys64/mingw64/bin/g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/dev/cpp/test-compiler/src/lexer.cpp -o CMakeFiles/test-compiler.dir/src/lexer.cpp.s
 
 CMakeFiles/test-compiler.dir/src/main.cpp.obj: CMakeFiles/test-compiler.dir/flags.make
 CMakeFiles/test-compiler.dir/src/main.cpp.obj: CMakeFiles/test-compiler.dir/includes_CXX.rsp
 CMakeFiles/test-compiler.dir/src/main.cpp.obj: C:/dev/cpp/test-compiler/src/main.cpp
 CMakeFiles/test-compiler.dir/src/main.cpp.obj: CMakeFiles/test-compiler.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/dev/cpp/test-compiler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/test-compiler.dir/src/main.cpp.obj"
-	"C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/c++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test-compiler.dir/src/main.cpp.obj -MF CMakeFiles/test-compiler.dir/src/main.cpp.obj.d -o CMakeFiles/test-compiler.dir/src/main.cpp.obj -c C:/dev/cpp/test-compiler/src/main.cpp
+	C:/msys64/mingw64/bin/g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test-compiler.dir/src/main.cpp.obj -MF CMakeFiles/test-compiler.dir/src/main.cpp.obj.d -o CMakeFiles/test-compiler.dir/src/main.cpp.obj -c C:/dev/cpp/test-compiler/src/main.cpp
 
 CMakeFiles/test-compiler.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test-compiler.dir/src/main.cpp.i"
-	"C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/c++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:/dev/cpp/test-compiler/src/main.cpp > CMakeFiles/test-compiler.dir/src/main.cpp.i
+	C:/msys64/mingw64/bin/g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:/dev/cpp/test-compiler/src/main.cpp > CMakeFiles/test-compiler.dir/src/main.cpp.i
 
 CMakeFiles/test-compiler.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test-compiler.dir/src/main.cpp.s"
-	"C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/c++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/dev/cpp/test-compiler/src/main.cpp -o CMakeFiles/test-compiler.dir/src/main.cpp.s
+	C:/msys64/mingw64/bin/g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/dev/cpp/test-compiler/src/main.cpp -o CMakeFiles/test-compiler.dir/src/main.cpp.s
+
+CMakeFiles/test-compiler.dir/src/parser.cpp.obj: CMakeFiles/test-compiler.dir/flags.make
+CMakeFiles/test-compiler.dir/src/parser.cpp.obj: CMakeFiles/test-compiler.dir/includes_CXX.rsp
+CMakeFiles/test-compiler.dir/src/parser.cpp.obj: C:/dev/cpp/test-compiler/src/parser.cpp
+CMakeFiles/test-compiler.dir/src/parser.cpp.obj: CMakeFiles/test-compiler.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:/dev/cpp/test-compiler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/test-compiler.dir/src/parser.cpp.obj"
+	C:/msys64/mingw64/bin/g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test-compiler.dir/src/parser.cpp.obj -MF CMakeFiles/test-compiler.dir/src/parser.cpp.obj.d -o CMakeFiles/test-compiler.dir/src/parser.cpp.obj -c C:/dev/cpp/test-compiler/src/parser.cpp
+
+CMakeFiles/test-compiler.dir/src/parser.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test-compiler.dir/src/parser.cpp.i"
+	C:/msys64/mingw64/bin/g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:/dev/cpp/test-compiler/src/parser.cpp > CMakeFiles/test-compiler.dir/src/parser.cpp.i
+
+CMakeFiles/test-compiler.dir/src/parser.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test-compiler.dir/src/parser.cpp.s"
+	C:/msys64/mingw64/bin/g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/dev/cpp/test-compiler/src/parser.cpp -o CMakeFiles/test-compiler.dir/src/parser.cpp.s
 
 # Object files for target test-compiler
 test__compiler_OBJECTS = \
 "CMakeFiles/test-compiler.dir/src/lexer.cpp.obj" \
-"CMakeFiles/test-compiler.dir/src/main.cpp.obj"
+"CMakeFiles/test-compiler.dir/src/main.cpp.obj" \
+"CMakeFiles/test-compiler.dir/src/parser.cpp.obj"
 
 # External object files for target test-compiler
 test__compiler_EXTERNAL_OBJECTS =
 
 test-compiler.exe: CMakeFiles/test-compiler.dir/src/lexer.cpp.obj
 test-compiler.exe: CMakeFiles/test-compiler.dir/src/main.cpp.obj
+test-compiler.exe: CMakeFiles/test-compiler.dir/src/parser.cpp.obj
 test-compiler.exe: CMakeFiles/test-compiler.dir/build.make
 test-compiler.exe: CMakeFiles/test-compiler.dir/linkLibs.rsp
 test-compiler.exe: CMakeFiles/test-compiler.dir/objects1
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:/dev/cpp/test-compiler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable test-compiler.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:/dev/cpp/test-compiler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable test-compiler.exe"
 	"C:/Program Files/CMake/bin/cmake.exe" -E rm -f CMakeFiles/test-compiler.dir/objects.a
-	"C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/ar.exe" qc CMakeFiles/test-compiler.dir/objects.a @CMakeFiles/test-compiler.dir/objects1
-	"C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/c++.exe" -g -Wl,--whole-archive CMakeFiles/test-compiler.dir/objects.a -Wl,--no-whole-archive -o test-compiler.exe -Wl,--out-implib,libtest-compiler.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/test-compiler.dir/linkLibs.rsp
+	C:/msys64/mingw64/bin/ar.exe qc CMakeFiles/test-compiler.dir/objects.a @CMakeFiles/test-compiler.dir/objects1
+	C:/msys64/mingw64/bin/g++.exe -g -Wl,--whole-archive CMakeFiles/test-compiler.dir/objects.a -Wl,--no-whole-archive -o test-compiler.exe -Wl,--out-implib,libtest-compiler.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/test-compiler.dir/linkLibs.rsp
 
 # Rule to build all files generated by this target.
 CMakeFiles/test-compiler.dir/build: test-compiler.exe

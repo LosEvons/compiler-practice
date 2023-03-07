@@ -177,6 +177,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test-compiler.dir/build.make CMakeFiles/test-compiler.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/parser.obj: src/parser.cpp.obj
+.PHONY : src/parser.obj
+
+# target to build an object file
+src/parser.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test-compiler.dir/build.make CMakeFiles/test-compiler.dir/src/parser.cpp.obj
+.PHONY : src/parser.cpp.obj
+
+src/parser.i: src/parser.cpp.i
+.PHONY : src/parser.i
+
+# target to preprocess a source file
+src/parser.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test-compiler.dir/build.make CMakeFiles/test-compiler.dir/src/parser.cpp.i
+.PHONY : src/parser.cpp.i
+
+src/parser.s: src/parser.cpp.s
+.PHONY : src/parser.s
+
+# target to generate assembly for a file
+src/parser.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test-compiler.dir/build.make CMakeFiles/test-compiler.dir/src/parser.cpp.s
+.PHONY : src/parser.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -192,6 +216,9 @@ help:
 	@echo "... src/main.obj"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/parser.obj"
+	@echo "... src/parser.i"
+	@echo "... src/parser.s"
 .PHONY : help
 
 
