@@ -21,13 +21,6 @@ void PrettyPrint(SyntaxNode* node, std::string indent = "", bool isLast = true){
 }
 
 int main(){
-	std::cout << "STANDARD COLOR SCHEME: " 
-	<< ANSI_COLOR_BLUE << "EXPRESSION " 
-	<< ANSI_COLOR_RED << "TOKEN " 
-	<< ANSI_COLOR_YELLOW << "INFO " 
-	<< ANSI_COLOR_RESET << std::endl;
-
-	std::cout << "STANDARD TREE FORMAT: \n" << "TYPE : ?STRING : ?VALUE" << std::endl;
 	while(true)
 	{
 		std::cout << ">";
@@ -42,15 +35,18 @@ int main(){
 		PrettyPrint(expression);
 
 		Lexer* lexer = new Lexer(input);
-		SyntaxToken* token;
+		//SyntaxToken* token;
 		
-		if (parser->Diagnostic().size() > 0){
+		if (parser->Diagnostic()->size() > 1){
 			auto print = [](const std::string &str) { std::cout << str << std::endl; };
 			std::for_each(
-				parser->Diagnostic().cbegin(), 
-				parser->Diagnostic().cend(), 
+				parser->Diagnostic()->cbegin(), 
+				parser->Diagnostic()->cend(), 
 				print);
-		}	
+		}
+		else if (parser->Diagnostic()->size() == 1){
+			std::cout << parser->Diagnostic()->front() << std::endl;
+		}
 		
 		/*
 		while(true){
@@ -70,7 +66,7 @@ int main(){
 		*/
 
 		delete parser;
-		delete token;
+		//delete token;
 		delete lexer;
 	}
 }

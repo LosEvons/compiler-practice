@@ -24,8 +24,10 @@ Parser::Parser(std::string text){
 	} while (token->Kind != EOF_TOKEN);
 
 	_tokens = tokens;
-	std::move(lexer->Diagnostics().begin(), lexer->Diagnostics().end(), std::back_inserter(_diagnostics));
 
+	std::vector<std::string>* srcVec = lexer->Diagnostic();
+	_diagnostics->insert(_diagnostics->end(), srcVec->begin(), srcVec->end());
+	delete srcVec;
 }
 
 SyntaxToken* Parser::NextToken(){
@@ -38,7 +40,7 @@ SyntaxToken* Parser::Match(SyntaxKind kind){
 	if (Current()->Kind == kind)
 		return NextToken();
 
-	_diagnostics.push_back(std::string("[ERROR]: unexpected token <") + GetSyntaxKindStr(Current()->Kind) + std::string(">, expected <") + GetSyntaxKindStr(kind) + std::string(">"));
+	_diagnostics->push_back(std::string("[ERROR]: unexpected token <") + GetSyntaxKindStr(Current()->Kind) + std::string(">, expected <") + GetSyntaxKindStr(kind) + std::string(">"));
 	return new SyntaxToken(kind, Current()->Position, "\0");
 }
 

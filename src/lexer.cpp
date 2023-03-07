@@ -108,7 +108,7 @@ SyntaxToken* Lexer::NextToken(){
 		return new SyntaxToken(CPAR_TOKEN, _position++, ")");
 	}
 
-	_diagnostics.push_back(std::string("[ERROR]: bad character input: ") + Current());
+	_diagnostics->push_back(std::string("[ERROR]: bad character input: ") + Current());
 	return new SyntaxToken(BAD_TOKEN, _position++, _text.substr(_position, 1));
 }
 

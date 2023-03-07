@@ -1,0 +1,5 @@
+# ninja log v5
+19	722	1678198185575351600	CMakeFiles/test-compiler.dir/src/lexer.cpp.o	dec7b08b94667154
+23	832	1678198185682909200	CMakeFiles/test-compiler.dir/src/main.cpp.o	5679890a8b2723b5
+26	1058	1678198185909928100	CMakeFiles/test-compiler.dir/src/parser.cpp.o	c6c9cd9f99e215ac
+1063	1476	1678198186334481300	test-compiler	9ed47f2abf817164

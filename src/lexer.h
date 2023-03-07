@@ -37,11 +37,11 @@ public:
 
 class SyntaxToken : public SyntaxNode{
 public:
-	SyntaxKind Kind;
-	int Position;
+	SyntaxKind Kind = BAD_TOKEN;
+	int Position = -1;
 	std::string Text;
-	int Value;
-	bool Nullval;
+	int Value = -1;
+	bool Nullval = true;
 
 	SyntaxToken(SyntaxKind kind, int position, std::string text, bool nullval = TOKEN_NULL_VALUE, int value = 0);
 	void PrintClassContents() override{
@@ -69,9 +69,9 @@ public:
 class BinaryExpressionSyntax : public ExpressionSyntax{
 public:
 	SyntaxKind Kind() override { return BINARY_EXPRESSION_TOKEN; };
-	ExpressionSyntax* Left;
-	SyntaxToken* OperatorToken;
-	ExpressionSyntax* Right;
+	ExpressionSyntax* Left = nullptr;
+	SyntaxToken* OperatorToken = nullptr;
+	ExpressionSyntax* Right = nullptr;
 	BinaryExpressionSyntax(ExpressionSyntax* left, SyntaxToken* operatorToken, ExpressionSyntax* right);
 	std::vector<SyntaxNode*> GetChildren() override { std::vector<SyntaxNode*> childs{Left, OperatorToken, Right}; return childs; };
 };
@@ -80,12 +80,12 @@ class Lexer{
 public:
 	Lexer(std::string text);
 	SyntaxToken* NextToken();
-	std::vector<std::string> Diagnostics(){ return _diagnostics; };
+	std::vector<std::string>* Diagnostic(){ return _diagnostics; };
 
 private:
 	std::string _text;
 	int _position = 0;
-	std::vector<std::string> _diagnostics = std::vector<std::string>();
+	std::vector<std::string>* _diagnostics = new std::vector<std::string>();
 
 	void Next();
 	char Current();
