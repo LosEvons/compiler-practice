@@ -62,7 +62,8 @@
 		"random": "cpp",
 		"numbers": "cpp",
 		"ranges": "cpp",
-		"span": "cpp"
+		"span": "cpp",
+		"codecvt": "cpp"
 	},
 	"C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
 	"C_Cpp.errorSquiggles": "disabled",

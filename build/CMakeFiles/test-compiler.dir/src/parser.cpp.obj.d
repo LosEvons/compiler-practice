@@ -144,4 +144,5 @@ CMakeFiles/test-compiler.dir/src/parser.cpp.obj: \
  C:/msys64/mingw64/include/c++/12.1.0/bits/vector.tcc \
  C:/dev/cpp/test-compiler/src/lexer.h \
  C:/msys64/mingw64/include/c++/12.1.0/optional \
- C:/msys64/mingw64/include/c++/12.1.0/bits/enable_special_members.h
+ C:/msys64/mingw64/include/c++/12.1.0/bits/enable_special_members.h \
+ C:/dev/cpp/test-compiler/src/definitions.h

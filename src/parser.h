@@ -10,10 +10,12 @@ class Parser{
 public:
 	Parser(std::string text);
 	ExpressionSyntax* Parse();
+	std::vector<std::string> Diagnostic(){ return _diagnostics; };
 
 private:
 	std::vector<SyntaxToken> _tokens;
 	int _position;
+	std::vector<std::string> _diagnostics = std::vector<std::string>();
 
 	SyntaxToken* Peek(int offset);
 	inline SyntaxToken* Current() { return Peek(0); };

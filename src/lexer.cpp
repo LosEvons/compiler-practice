@@ -2,6 +2,51 @@
 #include <string>
 #include "lexer.h"
 
+std::string GetSyntaxKindStr(SyntaxKind kind){
+	switch(kind){
+		case BAD_TOKEN:
+			return "BAD TOKEN";
+			break;
+		case EOF_TOKEN:
+			return "END OF FILE";
+			break;
+		case WHITESPACE_TOKEN:
+			return "WHITESPACE";
+			break;
+		case NUMBER_TOKEN:
+			return "NUMBER";
+			break;
+		case PLUS_TOKEN:
+			return "PLUS";
+			break;
+		case MINUS_TOKEN:
+			return "MINUS";
+			break;
+		case ASTERISK_TOKEN:
+			return "ASTERISK";
+			break;
+		case FSLASH_TOKEN:
+			return "FORWARD SLASH";
+			break;
+		case OPAR_TOKEN:
+			return "OPEN PARENTHESES";
+			break;
+		case CPAR_TOKEN:
+			return "CLOSE PARENTHESES";
+			break;
+		case NUMBER_EXPRESSION_TOKEN:
+			return "NUMBER EXPRESSION";
+			break;
+		case BINARY_EXPRESSION_TOKEN:
+			return "BINARY EXPRESSION";
+			break;
+
+		default:
+			break;
+	}
+	return "FAILED TO IDENTIFY TOKEN";
+}
+
 Lexer::Lexer(std::string text){
 	_text = text;
 }
@@ -63,6 +108,7 @@ SyntaxToken* Lexer::NextToken(){
 		return new SyntaxToken(CPAR_TOKEN, _position++, ")");
 	}
 
+	_diagnostics.push_back(std::string("[ERROR]: bad character input: ") + Current());
 	return new SyntaxToken(BAD_TOKEN, _position++, _text.substr(_position, 1));
 }
 
@@ -78,7 +124,7 @@ char Lexer::Current(){
 }
 
 BinaryExpressionSyntax::BinaryExpressionSyntax(ExpressionSyntax* left, SyntaxToken* operatorToken, ExpressionSyntax* right){
-		Left = left;
-		OperatorToken = operatorToken;
-		Right = right;
-	}
+	Left = left;
+	OperatorToken = operatorToken;
+	Right = right;
+}

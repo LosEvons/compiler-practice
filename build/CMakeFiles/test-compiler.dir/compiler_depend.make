@@ -145,7 +145,8 @@ CMakeFiles/test-compiler.dir/src/lexer.cpp.obj: C:/dev/cpp/test-compiler/src/lex
   C:/msys64/mingw64/include/c++/12.1.0/bits/stl_bvector.h \
   C:/msys64/mingw64/include/c++/12.1.0/bits/vector.tcc \
   C:/msys64/mingw64/include/c++/12.1.0/optional \
-  C:/msys64/mingw64/include/c++/12.1.0/bits/enable_special_members.h
+  C:/msys64/mingw64/include/c++/12.1.0/bits/enable_special_members.h \
+  C:/dev/cpp/test-compiler/src/definitions.h
 
 CMakeFiles/test-compiler.dir/src/main.cpp.obj: C:/dev/cpp/test-compiler/src/main.cpp \
   C:/msys64/mingw64/include/c++/12.1.0/iostream \
@@ -284,6 +285,14 @@ CMakeFiles/test-compiler.dir/src/main.cpp.obj: C:/dev/cpp/test-compiler/src/main
   C:/msys64/mingw64/include/c++/12.1.0/bits/ostream.tcc \
   C:/msys64/mingw64/include/c++/12.1.0/istream \
   C:/msys64/mingw64/include/c++/12.1.0/bits/istream.tcc \
+  C:/msys64/mingw64/include/c++/12.1.0/algorithm \
+  C:/msys64/mingw64/include/c++/12.1.0/bits/stl_algo.h \
+  C:/msys64/mingw64/include/c++/12.1.0/bits/algorithmfwd.h \
+  C:/msys64/mingw64/include/c++/12.1.0/bits/stl_heap.h \
+  C:/msys64/mingw64/include/c++/12.1.0/bits/stl_tempbuf.h \
+  C:/msys64/mingw64/include/c++/12.1.0/bits/uniform_int_dist.h \
+  C:/msys64/mingw64/include/c++/12.1.0/pstl/glue_algorithm_defs.h \
+  C:/msys64/mingw64/include/c++/12.1.0/pstl/execution_defs.h \
   C:/dev/cpp/test-compiler/src/lexer.h \
   C:/msys64/mingw64/include/c++/12.1.0/vector \
   C:/msys64/mingw64/include/c++/12.1.0/bits/stl_uninitialized.h \
@@ -291,7 +300,15 @@ CMakeFiles/test-compiler.dir/src/main.cpp.obj: C:/dev/cpp/test-compiler/src/main
   C:/msys64/mingw64/include/c++/12.1.0/bits/stl_bvector.h \
   C:/msys64/mingw64/include/c++/12.1.0/bits/vector.tcc \
   C:/msys64/mingw64/include/c++/12.1.0/optional \
-  C:/msys64/mingw64/include/c++/12.1.0/bits/enable_special_members.h
+  C:/msys64/mingw64/include/c++/12.1.0/bits/enable_special_members.h \
+  C:/dev/cpp/test-compiler/src/definitions.h \
+  C:/dev/cpp/test-compiler/src/parser.h \
+  C:/msys64/mingw64/include/c++/12.1.0/list \
+  C:/msys64/mingw64/include/c++/12.1.0/bits/stl_list.h \
+  C:/msys64/mingw64/include/c++/12.1.0/bits/allocated_ptr.h \
+  C:/msys64/mingw64/include/c++/12.1.0/ext/aligned_buffer.h \
+  C:/msys64/mingw64/include/c++/12.1.0/bits/list.tcc \
+  C:/msys64/mingw64/include/c++/12.1.0/ranges
 
 CMakeFiles/test-compiler.dir/src/parser.cpp.obj: C:/dev/cpp/test-compiler/src/parser.cpp \
   C:/dev/cpp/test-compiler/src/parser.h \
@@ -444,7 +461,8 @@ CMakeFiles/test-compiler.dir/src/parser.cpp.obj: C:/dev/cpp/test-compiler/src/pa
   C:/msys64/mingw64/include/c++/12.1.0/bits/vector.tcc \
   C:/dev/cpp/test-compiler/src/lexer.h \
   C:/msys64/mingw64/include/c++/12.1.0/optional \
-  C:/msys64/mingw64/include/c++/12.1.0/bits/enable_special_members.h
+  C:/msys64/mingw64/include/c++/12.1.0/bits/enable_special_members.h \
+  C:/dev/cpp/test-compiler/src/definitions.h
 
 
 C:/msys64/mingw64/include/locale.h:
@@ -639,6 +657,8 @@ C:/msys64/mingw64/include/c++/12.1.0/bits/stl_iterator.h:
 
 C:/msys64/mingw64/include/c++/12.1.0/ext/type_traits.h:
 
+C:/msys64/mingw64/include/c++/12.1.0/algorithm:
+
 C:/msys64/mingw64/include/c++/12.1.0/bits/ptr_traits.h:
 
 C:/msys64/mingw64/include/c++/12.1.0/bits/stl_function.h:
@@ -747,7 +767,23 @@ C:/msys64/mingw64/include/c++/12.1.0/bits/vector.tcc:
 
 C:/msys64/mingw64/include/c++/12.1.0/bits/enable_special_members.h:
 
+C:/dev/cpp/test-compiler/src/definitions.h:
+
 C:/dev/cpp/test-compiler/src/main.cpp:
+
+C:/msys64/mingw64/include/c++/12.1.0/bits/stl_algo.h:
+
+C:/msys64/mingw64/include/c++/12.1.0/bits/algorithmfwd.h:
+
+C:/msys64/mingw64/include/c++/12.1.0/bits/stl_heap.h:
+
+C:/msys64/mingw64/include/c++/12.1.0/bits/stl_tempbuf.h:
+
+C:/msys64/mingw64/include/c++/12.1.0/bits/uniform_int_dist.h:
+
+C:/msys64/mingw64/include/c++/12.1.0/pstl/glue_algorithm_defs.h:
+
+C:/msys64/mingw64/include/c++/12.1.0/pstl/execution_defs.h:
 
 C:/dev/cpp/test-compiler/src/parser.h:
 
