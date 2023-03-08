@@ -100,15 +100,15 @@ private:
 
 class SyntaxTree{
 public:
-	std::vector<std::string>* Diagnostic() { return _diagnostics; };
+	std::vector<std::string> Diagnostic() { return _diagnostics; };
 	ExpressionSyntax* Root = nullptr;
 	SyntaxToken* EofToken = nullptr;
-	SyntaxTree(std::vector<std::string>* diagnostics, ExpressionSyntax* root, SyntaxToken* eofToken);
+	SyntaxTree(std::vector<std::string> diagnostics, ExpressionSyntax* root, SyntaxToken* eofToken);
 	~SyntaxTree();
 	static SyntaxTree* Parse(std::string text);
 
 private:
-	std::vector<std::string>* _diagnostics = nullptr;
+	std::vector<std::string> _diagnostics;
 };
 
 class Lexer{

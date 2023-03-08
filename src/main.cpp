@@ -50,7 +50,7 @@ int main(){
 			PrettyPrint(syntaxTree->Root);
 		}
 		
-		if (syntaxTree->Diagnostic()->size() == 0){
+		if (syntaxTree->Diagnostic().size() == 0){
 			Evaluator* e = new Evaluator(syntaxTree->Root);
 			int results = e->Evaluate();
 			delete e;
@@ -59,8 +59,8 @@ int main(){
 		else{
 			auto print = [](const std::string &str) { std::cout << str << std::endl; };
 			std::for_each(
-				syntaxTree->Diagnostic()->cbegin(), 
-				syntaxTree->Diagnostic()->cend(), 
+				syntaxTree->Diagnostic().cbegin(), 
+				syntaxTree->Diagnostic().cend(), 
 				print);
 		}
 

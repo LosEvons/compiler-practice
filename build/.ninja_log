@@ -4,3 +4,16 @@
 22	816	1678284635121357600	CMakeFiles/test-compiler.dir/src/main.cpp.o	5679890a8b2723b5
 22	989	1678284674557645000	CMakeFiles/test-compiler.dir/src/parser.cpp.o	c6c9cd9f99e215ac
 999	1433	1678284675005559800	test-compiler	9ed47f2abf817164
+27	797	1678288110965308300	CMakeFiles/test-compiler.dir/src/lexer.cpp.o	dec7b08b94667154
+30	819	1678288110983312500	CMakeFiles/test-compiler.dir/src/main.cpp.o	5679890a8b2723b5
+32	1109	1678288111274392000	CMakeFiles/test-compiler.dir/src/parser.cpp.o	c6c9cd9f99e215ac
+1116	1653	1678288111820735700	test-compiler	9ed47f2abf817164
+18	773	1678288236682647300	CMakeFiles/test-compiler.dir/src/lexer.cpp.o	dec7b08b94667154
+20	869	1678288236777170100	CMakeFiles/test-compiler.dir/src/main.cpp.o	5679890a8b2723b5
+22	1053	1678288236961885400	CMakeFiles/test-compiler.dir/src/parser.cpp.o	c6c9cd9f99e215ac
+1060	1613	1678288237525311000	test-compiler	9ed47f2abf817164
+19	823	1678288449535679600	CMakeFiles/test-compiler.dir/src/lexer.cpp.o	dec7b08b94667154
+23	1042	1678288449754311500	CMakeFiles/test-compiler.dir/src/parser.cpp.o	c6c9cd9f99e215ac
+14	804	1678288470561560000	CMakeFiles/test-compiler.dir/src/main.cpp.o	5679890a8b2723b5
+810	1297	1678288471056122600	test-compiler	9ed47f2abf817164
+26	864	1678288508213118800	CMakeFiles/test-compiler.dir/src/main.cpp.o	5679890a8b2723b5

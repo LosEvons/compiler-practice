@@ -159,14 +159,14 @@ ParenthesizedExpressionSyntax::~ParenthesizedExpressionSyntax(){
 	delete CPToken;
 }
 
-SyntaxTree::SyntaxTree(std::vector<std::string>* diagnostics, ExpressionSyntax* root, SyntaxToken* eofToken): Root(root), EofToken(eofToken){
+SyntaxTree::SyntaxTree(std::vector<std::string> diagnostics, ExpressionSyntax* root, SyntaxToken* eofToken): Root(root), EofToken(eofToken){
 		_diagnostics = diagnostics;
 }
 
 SyntaxTree::~SyntaxTree(){
 	delete Root;
 	delete EofToken;
-	delete _diagnostics;
+	//delete _diagnostics;
 }
 
 int BinaryExpressionSyntax::GetValue(){
