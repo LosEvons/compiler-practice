@@ -63,6 +63,8 @@ int main(){
 				syntaxTree->Diagnostic()->cend(), 
 				print);
 		}
-	}
+
+		delete syntaxTree;
+	}	
 }
 

@@ -147,8 +147,26 @@ BinaryExpressionSyntax::BinaryExpressionSyntax(ExpressionSyntax* left, SyntaxTok
 	Right = right;
 }
 
+BinaryExpressionSyntax::~BinaryExpressionSyntax(){
+	delete Left;
+	delete OperatorToken;
+	delete Right;
+}
+
+ParenthesizedExpressionSyntax::~ParenthesizedExpressionSyntax(){
+	delete OPToken;
+	delete Expression;
+	delete CPToken;
+}
+
 SyntaxTree::SyntaxTree(std::vector<std::string>* diagnostics, ExpressionSyntax* root, SyntaxToken* eofToken): Root(root), EofToken(eofToken){
 		_diagnostics = diagnostics;
+}
+
+SyntaxTree::~SyntaxTree(){
+	delete Root;
+	delete EofToken;
+	delete _diagnostics;
 }
 
 int BinaryExpressionSyntax::GetValue(){

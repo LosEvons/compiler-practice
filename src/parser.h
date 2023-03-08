@@ -10,6 +10,7 @@
 class Parser{
 public:
 	Parser(std::string text);
+	~Parser();
 	SyntaxTree* Parse();
 	std::vector<std::string>* Diagnostic(){ return _diagnostics; };
 
@@ -31,6 +32,7 @@ private:
 class Evaluator{
 public:
 	Evaluator(ExpressionSyntax* root) : _root(root){};
+	//~Evaluator(){ delete _root; };
 	int Evaluate(){ return EvaluateExpression(_root); };
 	int EvaluateExpression(ExpressionSyntax* root);
 private:

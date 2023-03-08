@@ -79,6 +79,7 @@ public:
 	SyntaxToken* OperatorToken = nullptr;
 	ExpressionSyntax* Right = nullptr;
 	BinaryExpressionSyntax(ExpressionSyntax* left, SyntaxToken* operatorToken, ExpressionSyntax* right);
+	~BinaryExpressionSyntax();
 	std::vector<SyntaxNode*> GetChildren() override { std::vector<SyntaxNode*> childs{Left, OperatorToken, Right}; return childs; };
 	int GetValue() override;
 };
@@ -87,6 +88,7 @@ class ParenthesizedExpressionSyntax : public ExpressionSyntax{
 public:
 	ParenthesizedExpressionSyntax(SyntaxToken* opToken, ExpressionSyntax* expression, SyntaxToken* cpToken)
 		: OPToken(opToken), Expression(expression), CPToken(cpToken){}
+	~ParenthesizedExpressionSyntax();
 	SyntaxKind Kind() override { return PARENTHESIZED_EXPRESSION_SYNTAX; };
 	std::vector<SyntaxNode*> GetChildren() override { std::vector<SyntaxNode*> childs{OPToken, Expression, CPToken}; return childs; };
 	int GetValue() override { return Expression->GetValue(); };
@@ -102,6 +104,7 @@ public:
 	ExpressionSyntax* Root = nullptr;
 	SyntaxToken* EofToken = nullptr;
 	SyntaxTree(std::vector<std::string>* diagnostics, ExpressionSyntax* root, SyntaxToken* eofToken);
+	~SyntaxTree();
 	static SyntaxTree* Parse(std::string text);
 
 private:
@@ -111,6 +114,7 @@ private:
 class Lexer{
 public:
 	Lexer(std::string text);
+	~Lexer(){ delete _diagnostics; };
 	SyntaxToken* NextToken();
 	std::vector<std::string>* Diagnostic(){ return _diagnostics; };
 

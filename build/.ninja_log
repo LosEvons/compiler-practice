@@ -1,6 +1,6 @@
 # ninja log v5
-17	893	1678280450836293300	CMakeFiles/test-compiler.dir/src/lexer.cpp.o	dec7b08b94667154
+29	810	1678284356201999300	CMakeFiles/test-compiler.dir/src/lexer.cpp.o	dec7b08b94667154
 0	33	0	clean	a31eedcededa8236
-58	1427	1678281656071317900	CMakeFiles/test-compiler.dir/src/main.cpp.o	5679890a8b2723b5
-29	990	1678280985834958300	CMakeFiles/test-compiler.dir/src/parser.cpp.o	c6c9cd9f99e215ac
-1439	2482	1678281657130428900	test-compiler	9ed47f2abf817164
+22	816	1678284635121357600	CMakeFiles/test-compiler.dir/src/main.cpp.o	5679890a8b2723b5
+22	989	1678284674557645000	CMakeFiles/test-compiler.dir/src/parser.cpp.o	c6c9cd9f99e215ac
+999	1433	1678284675005559800	test-compiler	9ed47f2abf817164

@@ -26,8 +26,13 @@ Parser::Parser(std::string text){
 	_tokens = tokens;
 
 	std::vector<std::string>* srcVec = lexer->Diagnostic();
-	_diagnostics->insert(_diagnostics->end(), srcVec->begin(), srcVec->end());
-	delete srcVec;
+	//_diagnostics->insert(_diagnostics->end(), srcVec->begin(), srcVec->end());
+	*_diagnostics = *srcVec;
+	delete lexer;
+}
+
+Parser::~Parser(){
+	delete _diagnostics;
 }
 
 SyntaxToken* Parser::NextToken(){
@@ -100,6 +105,5 @@ int Evaluator::EvaluateExpression(ExpressionSyntax* root){
 SyntaxTree* SyntaxTree::Parse(std::string text){
 	Parser* parser = new Parser(text);
 	SyntaxTree* tree = parser->Parse();
-	delete parser;
 	return tree;
 }
