@@ -21,8 +21,9 @@ enum SyntaxKind{
 	FSLASH_TOKEN,
 	OPAR_TOKEN,
 	CPAR_TOKEN,
-	NUMBER_EXPRESSION_TOKEN,
-	BINARY_EXPRESSION_TOKEN,
+	NUMBER_EXPRESSION_SYNTAX,
+	BINARY_EXPRESSION_SYNTAX,
+	PARENTHESIZED_EXPRESSION_SYNTAX,
 };
 
 std::string GetSyntaxKindStr(SyntaxKind kind);
@@ -59,14 +60,13 @@ public:
 
 class ExpressionSyntax : public SyntaxNode{
 public:
-	virtual int GetValue() = 0;//{ throw tcexc::NotImplementedException(); return 0; };
-private:
+	virtual int GetValue() { throw tcexc::NotImplementedException(); return 0; };
 };
 
 class NumberExpressionSyntax : public ExpressionSyntax{
 public:
 	SyntaxToken NumberToken;
-	SyntaxKind Kind() override { return NUMBER_EXPRESSION_TOKEN; };
+	SyntaxKind Kind() override { return NUMBER_EXPRESSION_SYNTAX; };
 	NumberExpressionSyntax(const SyntaxToken numberToken) : NumberToken(numberToken){};
 	std::vector<SyntaxNode*> GetChildren() override { std::vector<SyntaxNode*> childs{&NumberToken}; return childs; };
 	int GetValue() override { return NumberToken.Value; };
@@ -74,7 +74,7 @@ public:
 
 class BinaryExpressionSyntax : public ExpressionSyntax{
 public:
-	SyntaxKind Kind() override { return BINARY_EXPRESSION_TOKEN; };
+	SyntaxKind Kind() override { return BINARY_EXPRESSION_SYNTAX; };
 	ExpressionSyntax* Left = nullptr;
 	SyntaxToken* OperatorToken = nullptr;
 	ExpressionSyntax* Right = nullptr;
@@ -83,15 +83,29 @@ public:
 	int GetValue() override;
 };
 
+class ParenthesizedExpressionSyntax : public ExpressionSyntax{
+public:
+	ParenthesizedExpressionSyntax(SyntaxToken* opToken, ExpressionSyntax* expression, SyntaxToken* cpToken)
+		: OPToken(opToken), Expression(expression), CPToken(cpToken){}
+	SyntaxKind Kind() override { return PARENTHESIZED_EXPRESSION_SYNTAX; };
+	std::vector<SyntaxNode*> GetChildren() override { std::vector<SyntaxNode*> childs{OPToken, Expression, CPToken}; return childs; };
+	int GetValue() override { return Expression->GetValue(); };
+private:
+	SyntaxToken* OPToken = nullptr;
+	ExpressionSyntax* Expression = nullptr;
+	SyntaxToken* CPToken = nullptr;
+};
+
 class SyntaxTree{
 public:
 	std::vector<std::string>* Diagnostic() { return _diagnostics; };
-	ExpressionSyntax* Root;
-	SyntaxToken* EofToken;
+	ExpressionSyntax* Root = nullptr;
+	SyntaxToken* EofToken = nullptr;
 	SyntaxTree(std::vector<std::string>* diagnostics, ExpressionSyntax* root, SyntaxToken* eofToken);
+	static SyntaxTree* Parse(std::string text);
 
 private:
-	std::vector<std::string>* _diagnostics;
+	std::vector<std::string>* _diagnostics = nullptr;
 };
 
 class Lexer{

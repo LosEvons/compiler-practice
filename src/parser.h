@@ -14,7 +14,7 @@ public:
 	std::vector<std::string>* Diagnostic(){ return _diagnostics; };
 
 private:
-	std::vector<SyntaxToken> _tokens;
+	std::vector<SyntaxToken*> _tokens;
 	int _position = 0;
 	std::vector<std::string>* _diagnostics = new std::vector<std::string>();
 
@@ -23,6 +23,7 @@ private:
 	SyntaxToken* NextToken();
 	SyntaxToken* Match(SyntaxKind kind);
 	ExpressionSyntax* ParsePrimaryExpression();
+	ExpressionSyntax* ParseExpression();
 	ExpressionSyntax* ParseTerm();
 	ExpressionSyntax* ParseFactor();
 };

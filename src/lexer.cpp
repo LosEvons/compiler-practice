@@ -34,11 +34,14 @@ std::string GetSyntaxKindStr(SyntaxKind kind){
 		case CPAR_TOKEN:
 			return "CLOSE PARENTHESES";
 			break;
-		case NUMBER_EXPRESSION_TOKEN:
+		case NUMBER_EXPRESSION_SYNTAX:
 			return "NUMBER EXPRESSION";
 			break;
-		case BINARY_EXPRESSION_TOKEN:
+		case BINARY_EXPRESSION_SYNTAX:
 			return "BINARY EXPRESSION";
+			break;
+		case PARENTHESIZED_EXPRESSION_SYNTAX:
+			return "PARENTHESIZED EXPRESSION";
 			break;
 
 		default:

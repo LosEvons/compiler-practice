@@ -3,14 +3,14 @@
 SyntaxToken* Parser::Peek(int offset){
 	int index = _position + offset;
 	if (index >= _tokens.size()){
-		return &_tokens[_tokens.size() - 1];
+		return _tokens[_tokens.size() - 1];
 	}
 
-	return &_tokens[index];
+	return _tokens[index];
 }
 
 Parser::Parser(std::string text){
-	std::vector<SyntaxToken> tokens;
+	std::vector<SyntaxToken*> tokens;
 	Lexer* lexer = new Lexer(text);
 	SyntaxToken* token;
 	do{
@@ -18,7 +18,7 @@ Parser::Parser(std::string text){
 
 		if (token->Kind != WHITESPACE_TOKEN
 		&& token->Kind != BAD_TOKEN){
-			tokens.push_back(*token);
+			tokens.push_back(token);
 		}
 
 	} while (token->Kind != EOF_TOKEN);
@@ -45,8 +45,20 @@ SyntaxToken* Parser::Match(SyntaxKind kind){
 }
 
 ExpressionSyntax* Parser::ParsePrimaryExpression(){
+	if (Current()->Kind == OPAR_TOKEN){
+		SyntaxToken* left = NextToken();
+		ExpressionSyntax* expression = ParseExpression();
+		SyntaxToken* right = Match(CPAR_TOKEN);
+
+		return new ParenthesizedExpressionSyntax(left, expression, right);
+	}
+
 	NumberExpressionSyntax numberToken = *Match(NUMBER_TOKEN);
 	return new NumberExpressionSyntax(numberToken);
+}
+
+ExpressionSyntax* Parser::ParseExpression(){
+	return ParseTerm();
 }
 
 ExpressionSyntax* Parser::ParseTerm(){
@@ -83,4 +95,11 @@ SyntaxTree* Parser::Parse(){
 
 int Evaluator::EvaluateExpression(ExpressionSyntax* root){
 	return root->GetValue();
+}
+
+SyntaxTree* SyntaxTree::Parse(std::string text){
+	Parser* parser = new Parser(text);
+	SyntaxTree* tree = parser->Parse();
+	delete parser;
+	return tree;
 }

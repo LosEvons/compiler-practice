@@ -4,6 +4,7 @@
 #include "lexer.h"
 #include "parser.h"
 #include "definitions.h"
+#include "utils.h"
 
 void PrettyPrint(SyntaxNode* node, std::string indent = "", bool isLast = true){
 	std::string marker = isLast ? "+---" : "|---";
@@ -21,6 +22,8 @@ void PrettyPrint(SyntaxNode* node, std::string indent = "", bool isLast = true){
 }
 
 int main(){
+	bool showTree = false;
+
 	while(true)
 	{
 		std::cout << ">";
@@ -29,10 +32,23 @@ int main(){
 		if (input.empty()){
 			return 0;
 		}
-		Parser* parser = new Parser(input);
-		SyntaxTree* syntaxTree = parser->Parse();
+		if (input == "#showtree"){
+			showTree = !showTree;
+			std::string msg = showTree ? "Parse tree visible" : "Parse tree hidden";
+			std::cout << msg << std::endl;
+			continue;
+		}
+		else if (input == "#cls"){
+			ClearConsole();
+			continue;
+		}
 
-		PrettyPrint(syntaxTree->Root);
+
+		SyntaxTree* syntaxTree = SyntaxTree::Parse(input);
+
+		if (showTree){
+			PrettyPrint(syntaxTree->Root);
+		}
 		
 		if (syntaxTree->Diagnostic()->size() == 0){
 			Evaluator* e = new Evaluator(syntaxTree->Root);
@@ -43,12 +59,10 @@ int main(){
 		else{
 			auto print = [](const std::string &str) { std::cout << str << std::endl; };
 			std::for_each(
-				parser->Diagnostic()->cbegin(), 
-				parser->Diagnostic()->cend(), 
+				syntaxTree->Diagnostic()->cbegin(), 
+				syntaxTree->Diagnostic()->cend(), 
 				print);
 		}
-
-		delete parser;
 	}
 }
 
