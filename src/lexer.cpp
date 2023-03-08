@@ -73,7 +73,22 @@ SyntaxToken* Lexer::NextToken(){
 
 		int length = _position - start;
 		std::string text = _text.substr(start, length);
-		int value = std::stoi(text);
+		int value = 0;
+		
+		try {
+			value = std::stoi(text);
+		}
+		catch (std::invalid_argument const& ex){
+			_diagnostics->push_back(
+				std::string("[ERROR]: The number: ") + text + std::string(" isn't a valid Int32.")
+			);
+		}
+		catch (std::out_of_range const& ex){
+			_diagnostics->push_back(
+				std::string("[ERROR]: The number: ") + text + std::string(" is out of Int32 range.")
+			);
+		}
+
 		return new SyntaxToken(NUMBER_TOKEN, start, text, TOKEN_HAS_VALUE, value);
 	}
 
@@ -127,4 +142,33 @@ BinaryExpressionSyntax::BinaryExpressionSyntax(ExpressionSyntax* left, SyntaxTok
 	Left = left;
 	OperatorToken = operatorToken;
 	Right = right;
+}
+
+SyntaxTree::SyntaxTree(std::vector<std::string>* diagnostics, ExpressionSyntax* root, SyntaxToken* eofToken): Root(root), EofToken(eofToken){
+		_diagnostics = diagnostics;
+}
+
+int BinaryExpressionSyntax::GetValue(){
+	int left = Left->GetValue();
+	int right = Right->GetValue();
+
+	switch(OperatorToken->Kind){
+		case PLUS_TOKEN:
+			return left + right;
+			break;
+		case MINUS_TOKEN:
+			return left - right;
+			break;
+		case ASTERISK_TOKEN:
+			return left * right;
+			break;
+		case FSLASH_TOKEN:
+			return left / right;
+			break;
+		
+		default:
+			std::string errstr = "Unexpected binary operator." + GetSyntaxKindStr(OperatorToken->Kind);
+			throw std::invalid_argument(errstr);
+			break;
+	}
 }

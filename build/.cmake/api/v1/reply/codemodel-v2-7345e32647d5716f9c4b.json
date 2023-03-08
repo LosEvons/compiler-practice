@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.22.1"
@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "test-compiler::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-test-compiler-Debug-2b8afd601fefa0bf11b4.json",
+					"jsonFile" : "target-test-compiler-Debug-ebdc2b3e25119bae354d.json",
 					"name" : "test-compiler",
 					"projectIndex" : 0
 				}
@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/dev/cpp/test-compiler/build",
-		"source" : "C:/dev/cpp/test-compiler"
+		"build" : "/mnt/c/dev/cpp/test-compiler/build",
+		"source" : "/mnt/c/dev/cpp/test-compiler"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 4
+		"minor" : 3
 	}
 }

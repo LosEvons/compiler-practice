@@ -30,44 +30,25 @@ int main(){
 			return 0;
 		}
 		Parser* parser = new Parser(input);
-		ExpressionSyntax* expression = parser->Parse();
+		SyntaxTree* syntaxTree = parser->Parse();
 
-		PrettyPrint(expression);
-
-		Lexer* lexer = new Lexer(input);
-		//SyntaxToken* token;
+		PrettyPrint(syntaxTree->Root);
 		
-		if (parser->Diagnostic()->size() > 1){
+		if (syntaxTree->Diagnostic()->size() == 0){
+			Evaluator* e = new Evaluator(syntaxTree->Root);
+			int results = e->Evaluate();
+			delete e;
+			std::cout << results << std::endl;
+		}
+		else{
 			auto print = [](const std::string &str) { std::cout << str << std::endl; };
 			std::for_each(
 				parser->Diagnostic()->cbegin(), 
 				parser->Diagnostic()->cend(), 
 				print);
 		}
-		else if (parser->Diagnostic()->size() == 1){
-			std::cout << parser->Diagnostic()->front() << std::endl;
-		}
-		
-		/*
-		while(true){
-			token = lexer->NextToken();
-			if (token->Kind == EOF_TOKEN){
-				break;
-			}
-			std::cout 
-			<< "Token kind: " << token->Kind
-			<< " Token text: " << token->Text;
-			if (!token->Nullval){
-				std::cout
-				<< " Token value: " << token->Value;
-			}
-			std::cout << std::endl;
-		}
-		*/
 
 		delete parser;
-		//delete token;
-		delete lexer;
 	}
 }
 

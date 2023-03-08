@@ -63,7 +63,9 @@
 		"numbers": "cpp",
 		"ranges": "cpp",
 		"span": "cpp",
-		"codecvt": "cpp"
+		"codecvt": "cpp",
+		"complex": "cpp",
+		"cinttypes": "cpp"
 	},
 	"C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
 	"C_Cpp.errorSquiggles": "disabled",

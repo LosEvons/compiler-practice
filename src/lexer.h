@@ -5,6 +5,7 @@
 #include <vector>
 #include <optional>
 #include "definitions.h"
+#include "exceptions.h"
 
 #define TOKEN_HAS_VALUE		false
 #define TOKEN_NULL_VALUE	true
@@ -56,7 +57,11 @@ public:
 	}
 };
 
-class ExpressionSyntax : public SyntaxNode{};
+class ExpressionSyntax : public SyntaxNode{
+public:
+	virtual int GetValue() = 0;//{ throw tcexc::NotImplementedException(); return 0; };
+private:
+};
 
 class NumberExpressionSyntax : public ExpressionSyntax{
 public:
@@ -64,6 +69,7 @@ public:
 	SyntaxKind Kind() override { return NUMBER_EXPRESSION_TOKEN; };
 	NumberExpressionSyntax(const SyntaxToken numberToken) : NumberToken(numberToken){};
 	std::vector<SyntaxNode*> GetChildren() override { std::vector<SyntaxNode*> childs{&NumberToken}; return childs; };
+	int GetValue() override { return NumberToken.Value; };
 };
 
 class BinaryExpressionSyntax : public ExpressionSyntax{
@@ -74,6 +80,18 @@ public:
 	ExpressionSyntax* Right = nullptr;
 	BinaryExpressionSyntax(ExpressionSyntax* left, SyntaxToken* operatorToken, ExpressionSyntax* right);
 	std::vector<SyntaxNode*> GetChildren() override { std::vector<SyntaxNode*> childs{Left, OperatorToken, Right}; return childs; };
+	int GetValue() override;
+};
+
+class SyntaxTree{
+public:
+	std::vector<std::string>* Diagnostic() { return _diagnostics; };
+	ExpressionSyntax* Root;
+	SyntaxToken* EofToken;
+	SyntaxTree(std::vector<std::string>* diagnostics, ExpressionSyntax* root, SyntaxToken* eofToken);
+
+private:
+	std::vector<std::string>* _diagnostics;
 };
 
 class Lexer{

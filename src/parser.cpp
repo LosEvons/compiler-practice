@@ -44,11 +44,29 @@ SyntaxToken* Parser::Match(SyntaxKind kind){
 	return new SyntaxToken(kind, Current()->Position, "\0");
 }
 
-ExpressionSyntax* Parser::Parse(){
-	ExpressionSyntax* left = ParsePrimaryExpression();
+ExpressionSyntax* Parser::ParsePrimaryExpression(){
+	NumberExpressionSyntax numberToken = *Match(NUMBER_TOKEN);
+	return new NumberExpressionSyntax(numberToken);
+}
+
+ExpressionSyntax* Parser::ParseTerm(){
+	ExpressionSyntax* left = ParseFactor();
 
 	while (Current()->Kind == PLUS_TOKEN
 	|| Current()->Kind == MINUS_TOKEN){
+		SyntaxToken* operatorToken = NextToken();
+		ExpressionSyntax* right = ParseFactor();
+		left = new BinaryExpressionSyntax(left, operatorToken, right);
+	}
+
+	return left;
+}
+
+ExpressionSyntax* Parser::ParseFactor(){
+	ExpressionSyntax* left = ParsePrimaryExpression();
+
+	while (Current()->Kind == ASTERISK_TOKEN
+	|| Current()->Kind == FSLASH_TOKEN){
 		SyntaxToken* operatorToken = NextToken();
 		ExpressionSyntax* right = ParsePrimaryExpression();
 		left = new BinaryExpressionSyntax(left, operatorToken, right);
@@ -57,7 +75,12 @@ ExpressionSyntax* Parser::Parse(){
 	return left;
 }
 
-ExpressionSyntax* Parser::ParsePrimaryExpression(){
-	NumberExpressionSyntax numberToken = *Match(NUMBER_TOKEN);
-	return new NumberExpressionSyntax(numberToken);
+SyntaxTree* Parser::Parse(){
+	ExpressionSyntax* expression = ParseTerm();
+	SyntaxToken* eofToken = Match(EOF_TOKEN);
+	return new SyntaxTree(_diagnostics, expression, eofToken);
+}
+
+int Evaluator::EvaluateExpression(ExpressionSyntax* root){
+	return root->GetValue();
 }
