@@ -2,7 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "test-compiler"
+			"path" : "test-compiler.exe"
+		},
+		{
+			"path" : "test-compiler.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -49,7 +52,7 @@
 			[
 				{
 					"backtrace" : 2,
-					"path" : "/mnt/c/dev/cpp/test-compiler/src"
+					"path" : "C:/dev/cpp/test-compiler/src"
 				}
 			],
 			"language" : "CXX",
@@ -73,12 +76,16 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
+			},
+			{
+				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
+				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
 	"name" : "test-compiler",
-	"nameOnDisk" : "test-compiler",
+	"nameOnDisk" : "test-compiler.exe",
 	"paths" : 
 	{
 		"build" : ".",

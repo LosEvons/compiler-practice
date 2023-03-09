@@ -1,3 +1,4 @@
+#include <memory>
 #include "parser.h"
 
 SyntaxToken* Parser::Peek(int offset){
@@ -11,29 +12,23 @@ SyntaxToken* Parser::Peek(int offset){
 
 Parser::Parser(std::string text){
 	std::vector<SyntaxToken*> tokens;
-	Lexer* lexer = new Lexer(text);
-	SyntaxToken* token;
+	Lexer lexer(text);
+	SyntaxKind currentTokenKind = EOF_TOKEN;
 	do{
-		token = lexer->NextToken();
+		SyntaxToken* token = lexer.NextToken();
+		currentTokenKind = token->Kind;
 
 		if (token->Kind != WHITESPACE_TOKEN
 		&& token->Kind != BAD_TOKEN){
 			tokens.push_back(token);
 		}
-
-	} while (token->Kind != EOF_TOKEN);
+	} while (currentTokenKind != EOF_TOKEN);
 
 	_tokens = tokens;
 
-	std::vector<std::string> srcVec = lexer->Diagnostic();
-	//_diagnostics->insert(_diagnostics->end(), srcVec->begin(), srcVec->end());
-	_diagnostics = srcVec;
-	delete lexer;
+	_diagnostics = lexer.Diagnostic();
 }
 
-Parser::~Parser(){
-	//delete _diagnostics;
-}
 
 SyntaxToken* Parser::NextToken(){
 	SyntaxToken* current = Current();
@@ -95,7 +90,7 @@ ExpressionSyntax* Parser::ParseFactor(){
 SyntaxTree* Parser::Parse(){
 	ExpressionSyntax* expression = ParseTerm();
 	SyntaxToken* eofToken = Match(EOF_TOKEN);
-	return new SyntaxTree(_diagnostics, expression, eofToken);
+	return new SyntaxTree(std::move(_diagnostics), expression, eofToken);
 }
 
 int Evaluator::EvaluateExpression(ExpressionSyntax* root){
@@ -103,8 +98,7 @@ int Evaluator::EvaluateExpression(ExpressionSyntax* root){
 }
 
 SyntaxTree* SyntaxTree::Parse(std::string text){
-	Parser* parser = new Parser(text);
+	std::unique_ptr<Parser> parser = std::make_unique<Parser>(text);
 	SyntaxTree* tree = parser->Parse();
-	delete parser;
 	return tree;
 }

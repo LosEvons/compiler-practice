@@ -10,14 +10,13 @@
 class Parser{
 public:
 	Parser(std::string text);
-	~Parser();
 	SyntaxTree* Parse();
 	std::vector<std::string> Diagnostic(){ return _diagnostics; };
 
 private:
 	std::vector<SyntaxToken*> _tokens;
 	int _position = 0;
-	std::vector<std::string> _diagnostics;;
+	std::vector<std::string> _diagnostics;
 
 	SyntaxToken* Peek(int offset);
 	SyntaxToken* Current() { return Peek(0); };
@@ -32,7 +31,6 @@ private:
 class Evaluator{
 public:
 	Evaluator(ExpressionSyntax* root) : _root(root){};
-	//~Evaluator(){ delete _root; };
 	int Evaluate(){ return EvaluateExpression(_root); };
 	int EvaluateExpression(ExpressionSyntax* root);
 private:

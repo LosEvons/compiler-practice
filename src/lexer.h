@@ -103,7 +103,7 @@ public:
 	std::vector<std::string> Diagnostic() { return _diagnostics; };
 	ExpressionSyntax* Root = nullptr;
 	SyntaxToken* EofToken = nullptr;
-	SyntaxTree(std::vector<std::string> diagnostics, ExpressionSyntax* root, SyntaxToken* eofToken);
+	SyntaxTree(std::vector<std::string>&& diagnostics, ExpressionSyntax* root, SyntaxToken* eofToken);
 	~SyntaxTree();
 	static SyntaxTree* Parse(std::string text);
 
@@ -114,14 +114,13 @@ private:
 class Lexer{
 public:
 	Lexer(std::string text);
-	~Lexer(){ delete _diagnostics; };
 	SyntaxToken* NextToken();
-	std::vector<std::string>* Diagnostic(){ return _diagnostics; };
+	std::vector<std::string> Diagnostic(){ return _diagnostics; };
 
 private:
 	std::string _text;
 	int _position = 0;
-	std::vector<std::string>* _diagnostics = new std::vector<std::string>();
+	std::vector<std::string> _diagnostics;
 
 	void Next();
 	char Current();

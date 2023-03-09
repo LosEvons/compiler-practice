@@ -49,7 +49,6 @@ int main(){
 		if (showTree){
 			PrettyPrint(syntaxTree->Root);
 		}
-		
 		if (syntaxTree->Diagnostic().size() == 0){
 			Evaluator* e = new Evaluator(syntaxTree->Root);
 			int results = e->Evaluate();
@@ -57,11 +56,9 @@ int main(){
 			std::cout << results << std::endl;
 		}
 		else{
-			auto print = [](const std::string &str) { std::cout << str << std::endl; };
-			std::for_each(
-				syntaxTree->Diagnostic().cbegin(), 
-				syntaxTree->Diagnostic().cend(), 
-				print);
+			for (int i = 0; i < syntaxTree->Diagnostic().size(); i++){
+				std::cout << syntaxTree->Diagnostic()[i] << std::endl;
+			}
 		}
 
 		delete syntaxTree;

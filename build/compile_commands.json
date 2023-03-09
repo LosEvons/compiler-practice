@@ -1,17 +1,17 @@
 [
 {
-  "directory": "/mnt/c/dev/cpp/test-compiler/build",
-  "command": "/usr/bin/c++ -I/mnt/c/dev/cpp/test-compiler/src -g -o CMakeFiles/test-compiler.dir/src/lexer.cpp.o -c /mnt/c/dev/cpp/test-compiler/src/lexer.cpp",
-  "file": "/mnt/c/dev/cpp/test-compiler/src/lexer.cpp"
+  "directory": "C:/dev/cpp/test-compiler/build",
+  "command": "C:/msys64/mingw64/bin/g++.exe  @CMakeFiles/test-compiler.dir/includes_CXX.rsp -g -o CMakeFiles/test-compiler.dir/src/lexer.cpp.obj -c C:/dev/cpp/test-compiler/src/lexer.cpp",
+  "file": "C:/dev/cpp/test-compiler/src/lexer.cpp"
 },
 {
-  "directory": "/mnt/c/dev/cpp/test-compiler/build",
-  "command": "/usr/bin/c++ -I/mnt/c/dev/cpp/test-compiler/src -g -o CMakeFiles/test-compiler.dir/src/main.cpp.o -c /mnt/c/dev/cpp/test-compiler/src/main.cpp",
-  "file": "/mnt/c/dev/cpp/test-compiler/src/main.cpp"
+  "directory": "C:/dev/cpp/test-compiler/build",
+  "command": "C:/msys64/mingw64/bin/g++.exe  @CMakeFiles/test-compiler.dir/includes_CXX.rsp -g -o CMakeFiles/test-compiler.dir/src/main.cpp.obj -c C:/dev/cpp/test-compiler/src/main.cpp",
+  "file": "C:/dev/cpp/test-compiler/src/main.cpp"
 },
 {
-  "directory": "/mnt/c/dev/cpp/test-compiler/build",
-  "command": "/usr/bin/c++ -I/mnt/c/dev/cpp/test-compiler/src -g -o CMakeFiles/test-compiler.dir/src/parser.cpp.o -c /mnt/c/dev/cpp/test-compiler/src/parser.cpp",
-  "file": "/mnt/c/dev/cpp/test-compiler/src/parser.cpp"
+  "directory": "C:/dev/cpp/test-compiler/build",
+  "command": "C:/msys64/mingw64/bin/g++.exe  @CMakeFiles/test-compiler.dir/includes_CXX.rsp -g -o CMakeFiles/test-compiler.dir/src/parser.cpp.obj -c C:/dev/cpp/test-compiler/src/parser.cpp",
+  "file": "C:/dev/cpp/test-compiler/src/parser.cpp"
 }
 ]

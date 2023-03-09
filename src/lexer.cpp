@@ -82,12 +82,12 @@ SyntaxToken* Lexer::NextToken(){
 			value = std::stoi(text);
 		}
 		catch (std::invalid_argument const& ex){
-			_diagnostics->push_back(
+			_diagnostics.push_back(
 				std::string("[ERROR]: The number: ") + text + std::string(" isn't a valid Int32.")
 			);
 		}
 		catch (std::out_of_range const& ex){
-			_diagnostics->push_back(
+			_diagnostics.push_back(
 				std::string("[ERROR]: The number: ") + text + std::string(" is out of Int32 range.")
 			);
 		}
@@ -126,7 +126,7 @@ SyntaxToken* Lexer::NextToken(){
 		return new SyntaxToken(CPAR_TOKEN, _position++, ")");
 	}
 
-	_diagnostics->push_back(std::string("[ERROR]: bad character input: ") + Current());
+	_diagnostics.push_back(std::string("[ERROR]: bad character input: ") + Current());
 	return new SyntaxToken(BAD_TOKEN, _position++, _text.substr(_position, 1));
 }
 
@@ -159,14 +159,13 @@ ParenthesizedExpressionSyntax::~ParenthesizedExpressionSyntax(){
 	delete CPToken;
 }
 
-SyntaxTree::SyntaxTree(std::vector<std::string> diagnostics, ExpressionSyntax* root, SyntaxToken* eofToken): Root(root), EofToken(eofToken){
+SyntaxTree::SyntaxTree(std::vector<std::string>&& diagnostics, ExpressionSyntax* root, SyntaxToken* eofToken): Root(root), EofToken(eofToken){
 		_diagnostics = diagnostics;
 }
 
 SyntaxTree::~SyntaxTree(){
 	delete Root;
 	delete EofToken;
-	//delete _diagnostics;
 }
 
 int BinaryExpressionSyntax::GetValue(){
