@@ -14,6 +14,9 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 
+out/build
+[Bb][Uu][Ii][Ll][Dd]/
+
 # # # # #
 # C + + #
 # # # # #
@@ -555,9 +558,6 @@ Makefile*
 *build-*
 *.qm
 *.prl
-
-out/build
-[Bb][Uu][Ii][Ll][Dd]/
 
 # Qt unit tests
 target_wrapper.*
