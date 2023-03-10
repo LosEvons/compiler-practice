@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
-#include "lexer.h"
 #include "parser.h"
+#include "lexer.h"
 #include "definitions.h"
 #include "utils.h"
 
@@ -11,7 +11,7 @@ void PrettyPrint(SyntaxNode* node, std::string indent = "", bool isLast = true){
 	std::cout << indent;
 	std::cout << marker;
 	node->PrintClassContents();
-	SyntaxNode* lastChild;
+	SyntaxNode* lastChild = nullptr;
 	if (node->GetChildren().size() > 0)
 		lastChild = node->GetChildren().back();
 	indent += isLast ? "    " : "|   ";
@@ -50,9 +50,7 @@ int main(){
 			PrettyPrint(syntaxTree->Root);
 		}
 		if (syntaxTree->Diagnostic().size() == 0){
-			Evaluator* e = new Evaluator(syntaxTree->Root);
-			int results = e->Evaluate();
-			delete e;
+			int results = Evaluator::Evaluate(syntaxTree->Root);
 			std::cout << results << std::endl;
 		}
 		else{

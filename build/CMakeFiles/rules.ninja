@@ -17,7 +17,7 @@
 rule CXX_COMPILER__test-compiler_Debug
   depfile = $DEP_FILE
   deps = gcc
-  command = /usr/bin/c++ $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = /usr/bin/cmake -E __run_co_compile --cppcheck="/usr/bin/cppcheck;--quiet;--enable=all;--inconclusive;--inline-suppr;--suppress=missingIncludeSystem;/mnt/c/dev/cpp/test-compiler/src/lexer.cpp;/mnt/c/dev/cpp/test-compiler/src/main.cpp;/mnt/c/dev/cpp/test-compiler/src/parser.cpp" --source=$in -- /usr/bin/c++ $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building CXX object $out
 
 

@@ -52,21 +52,21 @@ build cmake_object_order_depends_target_test-compiler: phony || CMakeFiles/test-
 build CMakeFiles/test-compiler.dir/src/lexer.cpp.o: CXX_COMPILER__test-compiler_Debug /mnt/c/dev/cpp/test-compiler/src/lexer.cpp || cmake_object_order_depends_target_test-compiler
   DEP_FILE = CMakeFiles/test-compiler.dir/src/lexer.cpp.o.d
   FLAGS = -g
-  INCLUDES = -I/mnt/c/dev/cpp/test-compiler/src
+  INCLUDES = -I/mnt/c/dev/cpp/test-compiler/include
   OBJECT_DIR = CMakeFiles/test-compiler.dir
   OBJECT_FILE_DIR = CMakeFiles/test-compiler.dir/src
 
 build CMakeFiles/test-compiler.dir/src/main.cpp.o: CXX_COMPILER__test-compiler_Debug /mnt/c/dev/cpp/test-compiler/src/main.cpp || cmake_object_order_depends_target_test-compiler
   DEP_FILE = CMakeFiles/test-compiler.dir/src/main.cpp.o.d
   FLAGS = -g
-  INCLUDES = -I/mnt/c/dev/cpp/test-compiler/src
+  INCLUDES = -I/mnt/c/dev/cpp/test-compiler/include
   OBJECT_DIR = CMakeFiles/test-compiler.dir
   OBJECT_FILE_DIR = CMakeFiles/test-compiler.dir/src
 
 build CMakeFiles/test-compiler.dir/src/parser.cpp.o: CXX_COMPILER__test-compiler_Debug /mnt/c/dev/cpp/test-compiler/src/parser.cpp || cmake_object_order_depends_target_test-compiler
   DEP_FILE = CMakeFiles/test-compiler.dir/src/parser.cpp.o.d
   FLAGS = -g
-  INCLUDES = -I/mnt/c/dev/cpp/test-compiler/src
+  INCLUDES = -I/mnt/c/dev/cpp/test-compiler/include
   OBJECT_DIR = CMakeFiles/test-compiler.dir
   OBJECT_FILE_DIR = CMakeFiles/test-compiler.dir/src
 

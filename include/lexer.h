@@ -42,10 +42,12 @@ public:
 	SyntaxKind Kind = BAD_TOKEN;
 	int Position = -1;
 	std::string Text;
-	int Value = -1;
 	bool Nullval = true;
+	int Value = 0;
 
-	SyntaxToken(SyntaxKind kind, int position, std::string text, bool nullval = TOKEN_NULL_VALUE, int value = 0);
+
+	SyntaxToken(SyntaxKind kind, int position, const std::string& text, bool nullval = TOKEN_NULL_VALUE, int value = 0)
+		: Kind(kind), Text(text), Nullval(nullval), Value(value){};
 	void PrintClassContents() override{
 		if (Nullval){
 			std::cout << ANSI_COLOR_RED << GetSyntaxKindStr(Kind)
@@ -60,16 +62,18 @@ public:
 
 class ExpressionSyntax : public SyntaxNode{
 public:
-	virtual int GetValue() { throw tcexc::NotImplementedException(); return 0; };
+	virtual int GetValue() { throw tcexc::NotImplementedException(); };
 };
 
 class NumberExpressionSyntax : public ExpressionSyntax{
 public:
-	SyntaxToken NumberToken;
 	SyntaxKind Kind() override { return NUMBER_EXPRESSION_SYNTAX; };
-	NumberExpressionSyntax(const SyntaxToken numberToken) : NumberToken(numberToken){};
-	std::vector<SyntaxNode*> GetChildren() override { std::vector<SyntaxNode*> childs{&NumberToken}; return childs; };
-	int GetValue() override { return NumberToken.Value; };
+	explicit NumberExpressionSyntax(SyntaxToken* numberToken) : NumberToken(numberToken){}; // IS EXPLICIT
+	~NumberExpressionSyntax(){ delete NumberToken; };
+	std::vector<SyntaxNode*> GetChildren() override { std::vector<SyntaxNode*> childs{NumberToken}; return childs; };
+	int GetValue() override { return NumberToken->Value; };
+private:
+	SyntaxToken* NumberToken = nullptr;
 };
 
 class BinaryExpressionSyntax : public ExpressionSyntax{
@@ -100,10 +104,11 @@ private:
 
 class SyntaxTree{
 public:
-	std::vector<std::string> Diagnostic() { return _diagnostics; };
+	std::vector<std::string> const Diagnostic() const { return _diagnostics; };
 	ExpressionSyntax* Root = nullptr;
 	SyntaxToken* EofToken = nullptr;
-	SyntaxTree(std::vector<std::string>&& diagnostics, ExpressionSyntax* root, SyntaxToken* eofToken);
+	SyntaxTree(std::vector<std::string>&& diagnostics, ExpressionSyntax* root, SyntaxToken* eofToken)
+		: Root(root), EofToken(eofToken), _diagnostics(diagnostics){};
 	~SyntaxTree();
 	static SyntaxTree* Parse(std::string text);
 
@@ -113,15 +118,15 @@ private:
 
 class Lexer{
 public:
-	Lexer(std::string text);
+	explicit Lexer(const std::string& text) : _text(text) {};
 	SyntaxToken* NextToken();
-	std::vector<std::string> Diagnostic(){ return _diagnostics; };
+	std::vector<std::string> const Diagnostic() const { return _diagnostics; };
 
 private:
-	std::string _text;
+	std::string _text = "";
 	int _position = 0;
 	std::vector<std::string> _diagnostics;
 
 	void Next();
-	char Current();
+	char const Current() const;
 };
