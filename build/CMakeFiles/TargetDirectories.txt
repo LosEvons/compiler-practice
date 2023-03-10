@@ -1,3 +1,0 @@
-C:/dev/cpp/test-compiler/build/CMakeFiles/test-compiler.dir
-C:/dev/cpp/test-compiler/build/CMakeFiles/edit_cache.dir
-C:/dev/cpp/test-compiler/build/CMakeFiles/rebuild_cache.dir

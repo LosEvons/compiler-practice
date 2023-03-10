@@ -53,7 +53,8 @@ ExpressionSyntax* Parser::ParsePrimaryExpression(){
 		return new ParenthesizedExpressionSyntax(left, expression, right);
 	}
 
-	NumberExpressionSyntax numberToken = *Match(NUMBER_TOKEN);
+	//NumberExpressionSyntax numberToken = *Match(NUMBER_TOKEN);
+	SyntaxToken* numberToken = Match(NUMBER_TOKEN);
 	return new NumberExpressionSyntax(numberToken);
 }
 

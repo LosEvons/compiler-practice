@@ -50,18 +50,6 @@ std::string GetSyntaxKindStr(SyntaxKind kind){
 	return "FAILED TO IDENTIFY TOKEN";
 }
 
-Lexer::Lexer(std::string text){
-	_text = text;
-}
-
-SyntaxToken::SyntaxToken(SyntaxKind kind, int position, std::string text, bool nullval, int value){
-	Kind = kind;
-	Position = position;
-	Text = text;
-	Value = value;
-	Nullval = nullval;
-}
-
 SyntaxToken* Lexer::NextToken(){
 	if (_position >= _text.length()){
 		return new SyntaxToken(EOF_TOKEN, _position, "\0");
@@ -134,7 +122,7 @@ void Lexer::Next(){
 	_position++;
 }
 
-char Lexer::Current(){
+char const Lexer::Current() const{
 	if (_position >= _text.length())
 		return '\0';
 	
@@ -157,10 +145,6 @@ ParenthesizedExpressionSyntax::~ParenthesizedExpressionSyntax(){
 	delete OPToken;
 	delete Expression;
 	delete CPToken;
-}
-
-SyntaxTree::SyntaxTree(std::vector<std::string>&& diagnostics, ExpressionSyntax* root, SyntaxToken* eofToken): Root(root), EofToken(eofToken){
-		_diagnostics = diagnostics;
 }
 
 SyntaxTree::~SyntaxTree(){
