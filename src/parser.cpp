@@ -22,6 +22,9 @@ Parser::Parser(std::string text){
 		&& token->Kind != BAD_TOKEN){
 			tokens.push_back(token);
 		}
+		else{
+			delete token;
+		}
 	} while (currentTokenKind != EOF_TOKEN);
 
 	_tokens = tokens;
@@ -46,16 +49,9 @@ SyntaxToken* Parser::Match(SyntaxKind kind){
 
 ExpressionSyntax* Parser::ParsePrimaryExpression(){
 	if (Current()->Kind == OPAR_TOKEN){
-		SyntaxToken* left = NextToken();
-		ExpressionSyntax* expression = ParseExpression();
-		SyntaxToken* right = Match(CPAR_TOKEN);
-
-		ExpressionSyntax* returnValue = new ParenthesizedExpressionSyntax(left, expression, right);
-		return returnValue;
+		return new ParenthesizedExpressionSyntax(NextToken(), ParseExpression(), Match(CPAR_TOKEN));
 	}
-
-	SyntaxToken* numberToken = Match(NUMBER_TOKEN);
-	return new NumberExpressionSyntax(numberToken);
+	return new NumberExpressionSyntax(Match(NUMBER_TOKEN));
 }
 
 ExpressionSyntax* Parser::ParseExpression(){
@@ -67,9 +63,7 @@ ExpressionSyntax* Parser::ParseTerm(){
 
 	while (Current()->Kind == PLUS_TOKEN
 	|| Current()->Kind == MINUS_TOKEN){
-		SyntaxToken* operatorToken = NextToken();
-		ExpressionSyntax* right = ParseFactor();
-		left = new BinaryExpressionSyntax(left, operatorToken, right);
+		left = new BinaryExpressionSyntax(left, NextToken(), ParseFactor());
 	}
 
 	return left;
@@ -80,23 +74,18 @@ ExpressionSyntax* Parser::ParseFactor(){
 
 	while (Current()->Kind == ASTERISK_TOKEN
 	|| Current()->Kind == FSLASH_TOKEN){
-		SyntaxToken* operatorToken = NextToken();
-		ExpressionSyntax* right = ParsePrimaryExpression();
-		left = new BinaryExpressionSyntax(left, operatorToken, right);
+		left = new BinaryExpressionSyntax(left, NextToken(), ParsePrimaryExpression());
 	}
 
 	return left;
 }
 
 SyntaxTree* Parser::Parse(){
-	ExpressionSyntax* expression = ParseTerm();
-	SyntaxToken* eofToken = Match(EOF_TOKEN);
-	SyntaxTree* returnValue = new SyntaxTree(std::move(_diagnostics), expression, eofToken);
-	return returnValue;
+	return new SyntaxTree(std::move(_diagnostics), ParseTerm(), Match(EOF_TOKEN));
 }
 
-int Evaluator::EvaluateExpression(ExpressionSyntax* root){
-	return root->GetValue();
+int Evaluator::EvaluateExpression(ExpressionSyntax& root){
+	return root.GetValue();
 }
 
 SyntaxTree* SyntaxTree::Parse(std::string text){

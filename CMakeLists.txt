@@ -17,7 +17,7 @@ if (ENABLE_CPPCHECK)
 			--suppress=missingIncludeSystem
 			--template="{file}:{line}: {severity}: {message}\\n{code}"
 			--template-location="{file}:{line}: note: {info}\\n{code}"
-			--output-file=./cppcheck-report.txt
+			--output-file=../cppcheck-report.txt
 			${SOURCES}
 		)
 	endif()

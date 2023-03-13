@@ -1,1 +1,1 @@
-valgrind -s --leak-check=full --log-file="valgrind-report.txt" ./build/test-compiler
+valgrind -s  --read-var-info=yes --read-inline-info=yes  --track-origins=yes --expensive-definedness-checks=yes --leak-check=full --log-file="valgrind-report.txt" ./build/test-compiler

@@ -91,7 +91,7 @@ public:
 class ParenthesizedExpressionSyntax : public ExpressionSyntax{
 public:
 	ParenthesizedExpressionSyntax(SyntaxToken* opToken, ExpressionSyntax* expression, SyntaxToken* cpToken)
-		: OPToken(opToken), Expression(expression), CPToken(cpToken){}
+		: OPToken(opToken), Expression(expression), CPToken(cpToken){};
 	~ParenthesizedExpressionSyntax();
 	SyntaxKind Kind() override { return PARENTHESIZED_EXPRESSION_SYNTAX; };
 	std::vector<SyntaxNode*> GetChildren() override { std::vector<SyntaxNode*> childs{OPToken, Expression, CPToken}; return childs; };

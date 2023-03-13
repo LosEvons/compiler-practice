@@ -50,7 +50,7 @@ int main(){
 			PrettyPrint(syntaxTree->Root);
 		}
 		if (syntaxTree->Diagnostic().size() == 0){
-			int results = Evaluator::Evaluate(syntaxTree->Root);
+			int results = Evaluator::Evaluate(*syntaxTree->Root);
 			std::cout << results << std::endl;
 		}
 		else{

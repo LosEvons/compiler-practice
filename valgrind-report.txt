@@ -1,159 +1,54 @@
-==13457== Memcheck, a memory error detector
-==13457== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==13457== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==13457== Command: ./build/test-compiler
-==13457== Parent PID: 13456
-==13457== 
-==13457== Invalid write of size 8
-==13457==    at 0x10D751: SyntaxToken::~SyntaxToken() (lexer.h:40)
-==13457==    by 0x10CF2E: SyntaxTree::~SyntaxTree() (lexer.cpp:155)
-==13457==    by 0x10FF85: main (main.cpp:62)
-==13457==  Address 0x4dd6980 is 0 bytes inside a block of size 56 free'd
-==13457==    at 0x484BB6F: operator delete(void*, unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==13457==    by 0x10CEFD: SyntaxTree::~SyntaxTree() (lexer.cpp:153)
-==13457==    by 0x10FF85: main (main.cpp:62)
-==13457==  Block was alloc'd at
-==13457==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==13457==    by 0x10BE6F: Lexer::NextToken() (lexer.cpp:56)
-==13457==    by 0x110AF9: Parser::Parser(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (parser.cpp:18)
-==13457==    by 0x1121FE: std::_MakeUniq<Parser>::__single_object std::make_unique<Parser, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (unique_ptr.h:962)
-==13457==    by 0x111486: SyntaxTree::Parse(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (parser.cpp:104)
-==13457==    by 0x10FDBC: main (main.cpp:47)
-==13457== 
-==13457== Invalid read of size 8
-==13457==    at 0x49B21F4: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==13457==    by 0x10D763: SyntaxToken::~SyntaxToken() (lexer.h:40)
-==13457==    by 0x10CF2E: SyntaxTree::~SyntaxTree() (lexer.cpp:155)
-==13457==    by 0x10FF85: main (main.cpp:62)
-==13457==  Address 0x4dd6990 is 16 bytes inside a block of size 56 free'd
-==13457==    at 0x484BB6F: operator delete(void*, unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==13457==    by 0x10CEFD: SyntaxTree::~SyntaxTree() (lexer.cpp:153)
-==13457==    by 0x10FF85: main (main.cpp:62)
-==13457==  Block was alloc'd at
-==13457==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==13457==    by 0x10BE6F: Lexer::NextToken() (lexer.cpp:56)
-==13457==    by 0x110AF9: Parser::Parser(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (parser.cpp:18)
-==13457==    by 0x1121FE: std::_MakeUniq<Parser>::__single_object std::make_unique<Parser, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (unique_ptr.h:962)
-==13457==    by 0x111486: SyntaxTree::Parse(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (parser.cpp:104)
-==13457==    by 0x10FDBC: main (main.cpp:47)
-==13457== 
-==13457== Invalid free() / delete / delete[] / realloc()
-==13457==    at 0x484BB6F: operator delete(void*, unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==13457==    by 0x10CF3B: SyntaxTree::~SyntaxTree() (lexer.cpp:155)
-==13457==    by 0x10FF85: main (main.cpp:62)
-==13457==  Address 0x4dd6980 is 0 bytes inside a block of size 56 free'd
-==13457==    at 0x484BB6F: operator delete(void*, unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==13457==    by 0x10CEFD: SyntaxTree::~SyntaxTree() (lexer.cpp:153)
-==13457==    by 0x10FF85: main (main.cpp:62)
-==13457==  Block was alloc'd at
-==13457==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==13457==    by 0x10BE6F: Lexer::NextToken() (lexer.cpp:56)
-==13457==    by 0x110AF9: Parser::Parser(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (parser.cpp:18)
-==13457==    by 0x1121FE: std::_MakeUniq<Parser>::__single_object std::make_unique<Parser, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (unique_ptr.h:962)
-==13457==    by 0x111486: SyntaxTree::Parse(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (parser.cpp:104)
-==13457==    by 0x10FDBC: main (main.cpp:47)
-==13457== 
-==13457== 
-==13457== HEAP SUMMARY:
-==13457==     in use at exit: 360 bytes in 9 blocks
-==13457==   total heap usage: 137 allocs, 130 frees, 82,095 bytes allocated
-==13457== 
-==13457== 16 bytes in 1 blocks are definitely lost in loss record 3 of 6
-==13457==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==13457==    by 0x1111A3: Parser::ParsePrimaryExpression() (parser.cpp:59)
-==13457==    by 0x1112D0: Parser::ParseFactor() (parser.cpp:80)
-==13457==    by 0x1111FC: Parser::ParseTerm() (parser.cpp:67)
-==13457==    by 0x1113A4: Parser::Parse() (parser.cpp:93)
-==13457==    by 0x11149A: SyntaxTree::Parse(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (parser.cpp:105)
-==13457==    by 0x10FDBC: main (main.cpp:47)
-==13457== 
-==13457== 56 bytes in 1 blocks are definitely lost in loss record 4 of 6
-==13457==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==13457==    by 0x110F28: Parser::Match(SyntaxKind) (parser.cpp:45)
-==13457==    by 0x111195: Parser::ParsePrimaryExpression() (parser.cpp:58)
-==13457==    by 0x1112D0: Parser::ParseFactor() (parser.cpp:80)
-==13457==    by 0x1111FC: Parser::ParseTerm() (parser.cpp:67)
-==13457==    by 0x1113A4: Parser::Parse() (parser.cpp:93)
-==13457==    by 0x11149A: SyntaxTree::Parse(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (parser.cpp:105)
-==13457==    by 0x10FDBC: main (main.cpp:47)
-==13457== 
-==13457== 64 (32 direct, 32 indirect) bytes in 1 blocks are definitely lost in loss record 5 of 6
-==13457==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==13457==    by 0x111300: Parser::ParseFactor() (parser.cpp:86)
-==13457==    by 0x11121E: Parser::ParseTerm() (parser.cpp:72)
-==13457==    by 0x1113A4: Parser::Parse() (parser.cpp:93)
-==13457==    by 0x11149A: SyntaxTree::Parse(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (parser.cpp:105)
-==13457==    by 0x10FDBC: main (main.cpp:47)
-==13457== 
-==13457== 224 bytes in 4 blocks are definitely lost in loss record 6 of 6
-==13457==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==13457==    by 0x10C5DA: Lexer::NextToken() (lexer.cpp:119)
-==13457==    by 0x110AF9: Parser::Parser(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (parser.cpp:18)
-==13457==    by 0x1121FE: std::_MakeUniq<Parser>::__single_object std::make_unique<Parser, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (unique_ptr.h:962)
-==13457==    by 0x111486: SyntaxTree::Parse(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (parser.cpp:104)
-==13457==    by 0x10FDBC: main (main.cpp:47)
-==13457== 
-==13457== LEAK SUMMARY:
-==13457==    definitely lost: 328 bytes in 7 blocks
-==13457==    indirectly lost: 32 bytes in 2 blocks
-==13457==      possibly lost: 0 bytes in 0 blocks
-==13457==    still reachable: 0 bytes in 0 blocks
-==13457==         suppressed: 0 bytes in 0 blocks
-==13457== 
-==13457== ERROR SUMMARY: 10 errors from 7 contexts (suppressed: 0 from 0)
-==13457== 
-==13457== 2 errors in context 1 of 7:
-==13457== Invalid free() / delete / delete[] / realloc()
-==13457==    at 0x484BB6F: operator delete(void*, unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==13457==    by 0x10CF3B: SyntaxTree::~SyntaxTree() (lexer.cpp:155)
-==13457==    by 0x10FF85: main (main.cpp:62)
-==13457==  Address 0x4dd6980 is 0 bytes inside a block of size 56 free'd
-==13457==    at 0x484BB6F: operator delete(void*, unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==13457==    by 0x10CEFD: SyntaxTree::~SyntaxTree() (lexer.cpp:153)
-==13457==    by 0x10FF85: main (main.cpp:62)
-==13457==  Block was alloc'd at
-==13457==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==13457==    by 0x10BE6F: Lexer::NextToken() (lexer.cpp:56)
-==13457==    by 0x110AF9: Parser::Parser(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (parser.cpp:18)
-==13457==    by 0x1121FE: std::_MakeUniq<Parser>::__single_object std::make_unique<Parser, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (unique_ptr.h:962)
-==13457==    by 0x111486: SyntaxTree::Parse(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (parser.cpp:104)
-==13457==    by 0x10FDBC: main (main.cpp:47)
-==13457== 
-==13457== 
-==13457== 2 errors in context 2 of 7:
-==13457== Invalid read of size 8
-==13457==    at 0x49B21F4: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-==13457==    by 0x10D763: SyntaxToken::~SyntaxToken() (lexer.h:40)
-==13457==    by 0x10CF2E: SyntaxTree::~SyntaxTree() (lexer.cpp:155)
-==13457==    by 0x10FF85: main (main.cpp:62)
-==13457==  Address 0x4dd6990 is 16 bytes inside a block of size 56 free'd
-==13457==    at 0x484BB6F: operator delete(void*, unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==13457==    by 0x10CEFD: SyntaxTree::~SyntaxTree() (lexer.cpp:153)
-==13457==    by 0x10FF85: main (main.cpp:62)
-==13457==  Block was alloc'd at
-==13457==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==13457==    by 0x10BE6F: Lexer::NextToken() (lexer.cpp:56)
-==13457==    by 0x110AF9: Parser::Parser(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (parser.cpp:18)
-==13457==    by 0x1121FE: std::_MakeUniq<Parser>::__single_object std::make_unique<Parser, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (unique_ptr.h:962)
-==13457==    by 0x111486: SyntaxTree::Parse(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (parser.cpp:104)
-==13457==    by 0x10FDBC: main (main.cpp:47)
-==13457== 
-==13457== 
-==13457== 2 errors in context 3 of 7:
-==13457== Invalid write of size 8
-==13457==    at 0x10D751: SyntaxToken::~SyntaxToken() (lexer.h:40)
-==13457==    by 0x10CF2E: SyntaxTree::~SyntaxTree() (lexer.cpp:155)
-==13457==    by 0x10FF85: main (main.cpp:62)
-==13457==  Address 0x4dd6980 is 0 bytes inside a block of size 56 free'd
-==13457==    at 0x484BB6F: operator delete(void*, unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==13457==    by 0x10CEFD: SyntaxTree::~SyntaxTree() (lexer.cpp:153)
-==13457==    by 0x10FF85: main (main.cpp:62)
-==13457==  Block was alloc'd at
-==13457==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==13457==    by 0x10BE6F: Lexer::NextToken() (lexer.cpp:56)
-==13457==    by 0x110AF9: Parser::Parser(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (parser.cpp:18)
-==13457==    by 0x1121FE: std::_MakeUniq<Parser>::__single_object std::make_unique<Parser, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (unique_ptr.h:962)
-==13457==    by 0x111486: SyntaxTree::Parse(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (parser.cpp:104)
-==13457==    by 0x10FDBC: main (main.cpp:47)
-==13457== 
-==13457== ERROR SUMMARY: 10 errors from 7 contexts (suppressed: 0 from 0)
+==27969== Memcheck, a memory error detector
+==27969== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==27969== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==27969== Command: ./build/test-compiler
+==27969== Parent PID: 27968
+==27969== 
+==27969== 
+==27969== HEAP SUMMARY:
+==27969==     in use at exit: 416 bytes in 10 blocks
+==27969==   total heap usage: 135 allocs, 125 frees, 81,991 bytes allocated
+==27969== 
+==27969== 56 bytes in 1 blocks are definitely lost in loss record 4 of 8
+==27969==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==27969==    by 0x10C13D: Lexer::NextToken() (lexer.cpp:100)
+==27969==    by 0x110833: Parser::Parser(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (parser.cpp:18)
+==27969==    by 0x111EA8: std::_MakeUniq<Parser>::__single_object std::make_unique<Parser, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (unique_ptr.h:962)
+==27969==    by 0x1111CE: SyntaxTree::Parse(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (parser.cpp:92)
+==27969==    by 0x10FAF6: main (main.cpp:47)
+==27969== 
+==27969== 56 bytes in 1 blocks are definitely lost in loss record 5 of 8
+==27969==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==27969==    by 0x110C82: Parser::Match(SyntaxKind) (parser.cpp:47)
+==27969==    by 0x110EE4: Parser::ParsePrimaryExpression() (parser.cpp:54)
+==27969==    by 0x111022: Parser::ParseFactor() (parser.cpp:73)
+==27969==    by 0x110F4E: Parser::ParseTerm() (parser.cpp:62)
+==27969==    by 0x11110B: Parser::Parse() (parser.cpp:84)
+==27969==    by 0x1111E2: SyntaxTree::Parse(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (parser.cpp:93)
+==27969==    by 0x10FAF6: main (main.cpp:47)
+==27969== 
+==27969== 72 (16 direct, 56 indirect) bytes in 1 blocks are definitely lost in loss record 6 of 8
+==27969==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==27969==    by 0x110EF1: Parser::ParsePrimaryExpression() (parser.cpp:54)
+==27969==    by 0x111022: Parser::ParseFactor() (parser.cpp:73)
+==27969==    by 0x110F4E: Parser::ParseTerm() (parser.cpp:62)
+==27969==    by 0x11110B: Parser::Parse() (parser.cpp:84)
+==27969==    by 0x1111E2: SyntaxTree::Parse(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (parser.cpp:93)
+==27969==    by 0x10FAF6: main (main.cpp:47)
+==27969== 
+==27969== 232 (32 direct, 200 indirect) bytes in 1 blocks are definitely lost in loss record 8 of 8
+==27969==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==27969==    by 0x111050: Parser::ParseFactor() (parser.cpp:77)
+==27969==    by 0x110F6F: Parser::ParseTerm() (parser.cpp:66)
+==27969==    by 0x11110B: Parser::Parse() (parser.cpp:84)
+==27969==    by 0x1111E2: SyntaxTree::Parse(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (parser.cpp:93)
+==27969==    by 0x10FAF6: main (main.cpp:47)
+==27969== 
+==27969== LEAK SUMMARY:
+==27969==    definitely lost: 160 bytes in 4 blocks
+==27969==    indirectly lost: 256 bytes in 6 blocks
+==27969==      possibly lost: 0 bytes in 0 blocks
+==27969==    still reachable: 0 bytes in 0 blocks
+==27969==         suppressed: 0 bytes in 0 blocks
+==27969== 
+==27969== ERROR SUMMARY: 4 errors from 4 contexts (suppressed: 0 from 0)

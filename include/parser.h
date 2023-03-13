@@ -30,7 +30,7 @@ private:
 
 class Evaluator{
 public:
-	static int Evaluate(ExpressionSyntax* _root){ return EvaluateExpression(_root); };
-	static int EvaluateExpression(ExpressionSyntax* root);
+	static int Evaluate(ExpressionSyntax& _root){ return EvaluateExpression(_root); };
+	static int EvaluateExpression(ExpressionSyntax& root);
 	
 };
