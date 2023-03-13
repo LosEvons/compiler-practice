@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "lexer.h"
+#include <cstring>
 
 std::string GetSyntaxKindStr(SyntaxKind kind){
 	switch(kind){

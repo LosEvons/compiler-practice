@@ -1,0 +1,1 @@
+valgrind -s --leak-check=full --log-file="valgrind-report.txt" ./build/test-compiler

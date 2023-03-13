@@ -50,10 +50,10 @@ ExpressionSyntax* Parser::ParsePrimaryExpression(){
 		ExpressionSyntax* expression = ParseExpression();
 		SyntaxToken* right = Match(CPAR_TOKEN);
 
-		return new ParenthesizedExpressionSyntax(left, expression, right);
+		ExpressionSyntax* returnValue = new ParenthesizedExpressionSyntax(left, expression, right);
+		return returnValue;
 	}
 
-	//NumberExpressionSyntax numberToken = *Match(NUMBER_TOKEN);
 	SyntaxToken* numberToken = Match(NUMBER_TOKEN);
 	return new NumberExpressionSyntax(numberToken);
 }
@@ -91,7 +91,8 @@ ExpressionSyntax* Parser::ParseFactor(){
 SyntaxTree* Parser::Parse(){
 	ExpressionSyntax* expression = ParseTerm();
 	SyntaxToken* eofToken = Match(EOF_TOKEN);
-	return new SyntaxTree(std::move(_diagnostics), expression, eofToken);
+	SyntaxTree* returnValue = new SyntaxTree(std::move(_diagnostics), expression, eofToken);
+	return returnValue;
 }
 
 int Evaluator::EvaluateExpression(ExpressionSyntax* root){

@@ -1,0 +1,26 @@
+buildType:
+  default: debug
+  description: Default debug build
+  choices:
+    debug:
+      short: Debug
+      long: Build with debugging information
+      buildType: debug
+    release:
+      short: Release
+      long: Optimize the resulting binaries
+      buildType: release
+
+useCppCheck:
+  default: 'yes'
+  choices:
+    'yes':
+      short: CppCheck
+      long: Enable cppcheck static analysis
+      settings:
+        ENABLE_CPPCHECK: yes
+    'no':
+      short: No CppCheck
+      long: Disable cppcheck static analysis
+      settings:
+        ENABLE_CPPCHECK: no

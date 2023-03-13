@@ -68,8 +68,8 @@ public:
 class NumberExpressionSyntax : public ExpressionSyntax{
 public:
 	SyntaxKind Kind() override { return NUMBER_EXPRESSION_SYNTAX; };
-	explicit NumberExpressionSyntax(SyntaxToken* numberToken) : NumberToken(numberToken){}; // IS EXPLICIT
-	~NumberExpressionSyntax(){ delete NumberToken; };
+	explicit NumberExpressionSyntax(SyntaxToken* numberToken) : NumberToken(numberToken){};
+	~NumberExpressionSyntax(){ delete NumberToken; NumberToken = nullptr;};
 	std::vector<SyntaxNode*> GetChildren() override { std::vector<SyntaxNode*> childs{NumberToken}; return childs; };
 	int GetValue() override { return NumberToken->Value; };
 private:
