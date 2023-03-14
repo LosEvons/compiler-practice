@@ -48,6 +48,7 @@ public:
 
 	SyntaxToken(SyntaxKind kind, int position, const std::string& text, bool nullval = TOKEN_NULL_VALUE, int value = 0)
 		: Kind(kind), Text(text), Nullval(nullval), Value(value){};
+
 	void PrintClassContents() override{
 		if (Nullval){
 			std::cout << ANSI_COLOR_RED << GetSyntaxKindStr(Kind)
@@ -65,15 +66,15 @@ public:
 	virtual int GetValue() { throw tcexc::NotImplementedException(); };
 };
 
-class NumberExpressionSyntax : public ExpressionSyntax{
+class LiteralExpressionSyntax : public ExpressionSyntax{
 public:
 	SyntaxKind Kind() override { return NUMBER_EXPRESSION_SYNTAX; };
-	explicit NumberExpressionSyntax(SyntaxToken* numberToken) : NumberToken(numberToken){};
-	~NumberExpressionSyntax(){ delete NumberToken; NumberToken = nullptr;};
-	std::vector<SyntaxNode*> GetChildren() override { std::vector<SyntaxNode*> childs{NumberToken}; return childs; };
-	int GetValue() override { return NumberToken->Value; };
+	explicit LiteralExpressionSyntax(SyntaxToken* literalToken) : LiteralToken(literalToken){};
+	~LiteralExpressionSyntax(){ delete LiteralToken; };
+	std::vector<SyntaxNode*> GetChildren() override { std::vector<SyntaxNode*> childs{LiteralToken}; return childs; };
+	int GetValue() override { return LiteralToken->Value; };
 private:
-	SyntaxToken* NumberToken = nullptr;
+	SyntaxToken* LiteralToken = nullptr;
 };
 
 class BinaryExpressionSyntax : public ExpressionSyntax{
@@ -110,7 +111,7 @@ public:
 	SyntaxTree(std::vector<std::string>&& diagnostics, ExpressionSyntax* root, SyntaxToken* eofToken)
 		: Root(root), EofToken(eofToken), _diagnostics(diagnostics){};
 	~SyntaxTree();
-	static SyntaxTree* Parse(std::string text);
+	static SyntaxTree* Parse(const std::string& text);
 
 private:
 	std::vector<std::string> _diagnostics;
@@ -119,7 +120,7 @@ private:
 class Lexer{
 public:
 	explicit Lexer(const std::string& text) : _text(text) {};
-	SyntaxToken* NextToken();
+	SyntaxToken* Lex();
 	std::vector<std::string> const Diagnostic() const { return _diagnostics; };
 
 private:

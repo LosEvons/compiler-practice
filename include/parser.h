@@ -12,7 +12,7 @@ public:
 	explicit Parser(std::string text);
 	SyntaxTree* Parse();
 	std::vector<std::string> Diagnostic() const { return _diagnostics; };
-	
+
 private:
 	std::vector<SyntaxToken*> _tokens;
 	int _position = 0;
@@ -21,7 +21,7 @@ private:
 	SyntaxToken* Peek(int offset);
 	SyntaxToken* Current() { return Peek(0); };
 	SyntaxToken* NextToken();
-	SyntaxToken* Match(SyntaxKind kind);
+	SyntaxToken* MatchToken(SyntaxKind kind);
 	ExpressionSyntax* ParsePrimaryExpression();
 	ExpressionSyntax* ParseExpression();
 	ExpressionSyntax* ParseTerm();
@@ -31,6 +31,7 @@ private:
 class Evaluator{
 public:
 	static int Evaluate(ExpressionSyntax& _root){ return EvaluateExpression(_root); };
+private:
 	static int EvaluateExpression(ExpressionSyntax& root);
 	
 };

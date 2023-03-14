@@ -51,7 +51,7 @@ std::string GetSyntaxKindStr(SyntaxKind kind){
 	return "FAILED TO IDENTIFY TOKEN";
 }
 
-SyntaxToken* Lexer::NextToken(){
+SyntaxToken* Lexer::Lex(){
 	if (_position >= _text.length()){
 		return new SyntaxToken(EOF_TOKEN, _position, "\0");
 	}

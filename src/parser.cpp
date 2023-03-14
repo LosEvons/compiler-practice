@@ -14,8 +14,9 @@ Parser::Parser(std::string text){
 	std::vector<SyntaxToken*> tokens;
 	Lexer lexer(text);
 	SyntaxKind currentTokenKind = EOF_TOKEN;
+	SyntaxToken* token = nullptr;
 	do{
-		SyntaxToken* token = lexer.NextToken();
+		token = lexer.Lex();
 		currentTokenKind = token->Kind;
 
 		if (token->Kind != WHITESPACE_TOKEN
@@ -27,9 +28,9 @@ Parser::Parser(std::string text){
 		}
 	} while (currentTokenKind != EOF_TOKEN);
 
-	_tokens = tokens;
+	_tokens = std::move(tokens);
 
-	_diagnostics = lexer.Diagnostic();
+	_diagnostics = std::move(lexer.Diagnostic());
 }
 
 
@@ -39,7 +40,7 @@ SyntaxToken* Parser::NextToken(){
 	return current;
 }
 
-SyntaxToken* Parser::Match(SyntaxKind kind){
+SyntaxToken* Parser::MatchToken(SyntaxKind kind){
 	if (Current()->Kind == kind)
 		return NextToken();
 
@@ -49,9 +50,9 @@ SyntaxToken* Parser::Match(SyntaxKind kind){
 
 ExpressionSyntax* Parser::ParsePrimaryExpression(){
 	if (Current()->Kind == OPAR_TOKEN){
-		return new ParenthesizedExpressionSyntax(NextToken(), ParseExpression(), Match(CPAR_TOKEN));
+		return new ParenthesizedExpressionSyntax(NextToken(), ParseExpression(), MatchToken(CPAR_TOKEN));
 	}
-	return new NumberExpressionSyntax(Match(NUMBER_TOKEN));
+	return new LiteralExpressionSyntax(MatchToken(NUMBER_TOKEN));
 }
 
 ExpressionSyntax* Parser::ParseExpression(){
@@ -81,14 +82,14 @@ ExpressionSyntax* Parser::ParseFactor(){
 }
 
 SyntaxTree* Parser::Parse(){
-	return new SyntaxTree(std::move(_diagnostics), ParseTerm(), Match(EOF_TOKEN));
+	return new SyntaxTree(std::move(_diagnostics), ParseExpression(), MatchToken(EOF_TOKEN));
 }
 
 int Evaluator::EvaluateExpression(ExpressionSyntax& root){
 	return root.GetValue();
 }
 
-SyntaxTree* SyntaxTree::Parse(std::string text){
+SyntaxTree* SyntaxTree::Parse(const std::string& text){
 	std::unique_ptr<Parser> parser = std::make_unique<Parser>(text);
 	SyntaxTree* tree = parser->Parse();
 	return tree;
